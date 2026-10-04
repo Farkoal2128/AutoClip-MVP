@@ -16,8 +16,7 @@ Download [AutoClip-Update-v1.0.0.zip](https://github.com/Farkoal2128/AutoClip-MV
 
 ## What this repository contains
 
-Installer source, its required PowerShell/Python helpers, release validation/build scripts, notices, and focused distribution checks. Application/runtime archives and native wheels are versioned release assets rather than files stored in Git. Application development remains in [myAutoclip](https://github.com/Farkoal2128/myAutoclip).
-
+Installer source, its required PowerShell/Python helpers, release validation/build scripts, notices, and focused distribution checks. Application/runtime archives and native wheels are versioned release assets rather than files stored in Git.
 AutoClip-owned payload downloads and application-update metadata use this repository. Dependencies acquired directly from their original publishers retain their publisher URLs. Payloads are verified against pinned SHA-256 digests and sizes; failed verification or application health checks prevent activation.
 
 ## Build and verification
