@@ -34,6 +34,12 @@ For the 2026-10-03 MVP prerelease, the owner explicitly selected exact package
 review and local installation lifecycle tests as the acceptance criteria.
 Historical V11/r22 external review gates retain their original scope.
 
+Prerequisite detection must report absent or malfunctioning capabilities even
+when a native probe writes to stderr or raises an error. Failed probes do not
+prove capability availability: downloadable prerequisites remain missing, and
+missing system-provided prerequisites continue to block installation. Such probe
+failures must not prevent the prerequisite report from being written.
+
 ## Maintainer build
 
 Keep exact archives/manifests and candidate output outside the Git checkout.

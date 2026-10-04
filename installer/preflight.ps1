@@ -43,6 +43,7 @@ function Find-Tool([string]$Name) {
 }
 
 function Test-BuildCapability([string]$Identity, [string]$Version, $Entry = $null, [string]$MsysRoot = 'C:\msys64') {
+    try {
     switch ($Identity) {
         'uv' {
             $uv = Find-Tool 'uv.exe'
@@ -149,6 +150,10 @@ function Test-BuildCapability([string]$Identity, [string]$Version, $Entry = $nul
         }
     }
     return $false
+    } catch {
+        # A broken installed tool is missing capability, not a reason to abort inspection.
+        return $false
+    }
 }
 
 $publisherNative = if ($Profile -eq 'nvidia') { $manifest.nvidia_native_artifact } else { $manifest.cpu_native_artifact }
@@ -210,3 +215,4 @@ if ($ReportPath) { [IO.File]::WriteAllLines($ReportPath, $lines, [Text.Encoding]
 if ($RequireReady -and $missing.Count) { exit 2 }
 if ($RequireNoBlocked -and $blocked) { exit 2 }
 if ($CheckIdentity -and $missing.Count) { exit 2 }
+exit 0
