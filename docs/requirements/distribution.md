@@ -57,6 +57,9 @@ assets as rollback and provenance references after consolidation.
 
 ## Maintainer build
 
+For the published v1.0.0 inputs, compiler identity, application build, and exact
+installer commands, use [BUILDING.md](../../BUILDING.md).
+
 An owner-test app-only draft may target an already published compatible runtime
 without promoting the public app feed. Give it a unique app/release identity,
 verify the exact wheel against its source archive and unchanged dependency
@@ -79,7 +82,7 @@ With the exact local files named below, compile with:
 ```powershell
 python scripts/build-inno.py `
   --manifest ../release-inputs/installer-dependencies-v1.json `
-  --archive ../release-inputs/autoclip-mvp-v0.1.0-20261003-r1.zip `
+  --archive ../release-inputs/autoclip-windows-v1.0.0.zip `
   --bootstrap ../release-inputs/install.ps1 `
   --iscc ../inno/ISCC.exe `
   --native-artifact ../release-inputs/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
