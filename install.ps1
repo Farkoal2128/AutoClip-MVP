@@ -1,4 +1,4 @@
-﻿param(
+param(
     [string]$InstallRoot,
     [string]$ArchivePath,
     [string]$ExternalCache,
@@ -42,7 +42,6 @@
 )
 
 $ErrorActionPreference = 'Stop'
-throw 'No installer release has been published. Build with the generated pinned bootstrap; public defaults will be promoted after release verification.'
 $script:EmbeddedPrerequisiteTerms = @'
 {
   "schema_version": 1,
@@ -1010,10 +1009,10 @@ function Ensure-CudaPrerequisites {
 }
 
 
-$releaseUrl = 'https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-dev0-windows-source-v40-20260928/autoclip-source-build-v40-provenance-continuity.zip' # Promote only after the exact asset is published and verified.
-$expectedArchiveSha256 = 'f2b3be779294bc55d6f5f56c2a780a2d6b863486f3af9bd7d19f30051961fc9f'
-$expectedManifestSha256 = '7fbf72038be30522bc176002082fddd92fd4e057159765726e77806a296658e2'
-$releaseId = 'v11-20260928-source-build-candidate-v40-provenance-continuity'
+$releaseUrl = 'https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-mvp-v0.1.0-20261003-r1.zip' # Promote only after the exact asset is published and verified.
+$expectedArchiveSha256 = 'a720dde04beacd287561bf43c0938dc5530feb801211dda416eb2a90ee6b86c4'
+$expectedManifestSha256 = '572a4fc6f9734331b484c8b3a3301f7dda6e2783695200962e2ba38bdd9a9970'
+$releaseId = 'v0.1.0-mvp-20261003-r1'
 
 if ($ReleaseInfo) {
     [pscustomobject]@{

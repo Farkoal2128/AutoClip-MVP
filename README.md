@@ -1,10 +1,10 @@
-﻿# AutoClip for Windows
+# AutoClip for Windows
 
 Windows installer and maintenance files for AutoClip. This repository is the distribution home for future Windows releases.
 
 ## Download and install
 
-Download `AutoClip-Setup-v1.exe` from [Releases](https://github.com/Farkoal2128/AutoClip-MVP/releases). Release assets are available only after the candidate passes the documented release checks. If no release is listed, there is no published installer yet.
+Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/AutoClip-Setup-v1.exe) from the [Windows MVP prerelease](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v0.1.0-mvp-20261003-r1). It passed exact package review and local CPU/NVIDIA installation lifecycle tests. See the [validation record](docs/releases/v0.1.0-mvp-20261003-r1.md) for evidence and coverage limits.
 
 Run the installer and choose **Install AutoClip**. CPU is the default profile. The NVIDIA profile uses prebuilt native wheels and checks compatible GPU prerequisites. Review the prerequisite terms shown by Setup. **Launch AutoClip** on the final page opens the application.
 

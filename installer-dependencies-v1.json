@@ -1,0 +1,298 @@
+{
+  "build_prerequisites": [
+    {
+      "architecture": "x64",
+      "artifact_kind": "archive",
+      "artifact_pin_status": "publisher_metadata_and_local_hash",
+      "bytes": 17955780,
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "Valid OpenAI OpCo, LLC Authenticode and uv 0.12.19",
+      "elevation": "none",
+      "identity": "uv",
+      "installer_arguments": [],
+      "license_evidence": "docs/installer-migration/work-orders/IM-TOOL-01.md",
+      "post_install_check": "signed exact executable, uv --version and Python 3.11.9 venv selection",
+      "profile": "both",
+      "publisher": "Astral Software Inc.; signed by OpenAI OpCo, LLC",
+      "purpose": "recipient Python environment and pinned package installation",
+      "reason": "Exact official archive acquisition/extraction/version verified on ordinary clean-snapshot guest; versioned MIT/Apache texts and source index bound in setup. Direct acquisition permitted; exact final installed notices and whole-wizard qualification remain pending (IM-TOOL-01/02/03, IM-DEP-01).",
+      "reboot_behavior": "none",
+      "redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "sha256": "6dbb02d79e419522f1c500f0adb1cddcff0cda7d59b0d66ea7f5e3b4a1b2f5f0",
+      "success_exit_codes": [],
+      "url": "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-x86_64-pc-windows-msvc.zip",
+      "version": "0.12.19",
+      "winget_id": "astral-sh.uv"
+    },
+    {
+      "architecture": "x64",
+      "artifact_kind": "archive",
+      "artifact_pin_status": "publisher_metadata_and_local_hash",
+      "bytes": 111253802,
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "exact selected binary hashes/version plus ass/subtitles/libx264 and FFprobe",
+      "elevation": "none",
+      "executable_pins": [
+        {
+          "path": "ffmpeg-9.0.1-essentials_build/bin/ffmpeg.exe",
+          "sha256": "72a489eccd008c2ec2c0a5856c5c75bc3d8bbfa90166c4566865c246445e6aa3"
+        },
+        {
+          "path": "ffmpeg-9.0.1-essentials_build/bin/ffprobe.exe",
+          "sha256": "19202b23c0043f15ad1b7bce2344f406fd52bd6efd8f995ce02e7392a1cec52f"
+        }
+      ],
+      "filename": "ffmpeg-9.0.1-essentials_build.zip",
+      "identity": "Gyan FFmpeg",
+      "installer_arguments": [],
+      "license_evidence": "docs/installer-migration/work-orders/IM-FF-02.md",
+      "operation_scope": "official recipient download and private unmodified external CLI execution; no AutoClip redistribution or mirror",
+      "post_install_check": "ASS plus H.264/AAC render and FFprobe/frame-decode check",
+      "profile": "both",
+      "publisher": "Gyan Doshi",
+      "purpose": "separate CLI media decode, subtitle rendering and H.264/AAC export",
+      "reason": "Exact official essentials archive, complete retained notices/inventory, executable pins, persistent discovery and render/decode verified (IM-FF-07, IM-CPU-26). Recipient acquisition only; no redistribution/source-closure approval. Exact whole-wizard qualification remains pending (IM-DEP-01).",
+      "reboot_behavior": "none",
+      "redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "sha256": "fec81ae03971d9dd4be3ebe02e263bd2ec1d789483f931bdba5f5715e65da2e9",
+      "success_exit_codes": [],
+      "supplier_source_notice_status": "complete static-linked supplier source/notice closure unproved; this is not redistribution clearance",
+      "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.1/ffmpeg-9.0.1-essentials_build.zip",
+      "version": "9.0.1",
+      "winget_id": "Gyan.FFmpeg"
+    },
+    {
+      "architecture": "x64",
+      "artifact_pin_status": "official_size_winget_hash_and_local_hash",
+      "bytes": 26216840,
+      "cancel_exit_codes": [
+        1602
+      ],
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "PSF-signed registered interpreter with exact 3.11.9 x64 native capability checks",
+      "elevation": "per-user; vendor runtime prerequisites may request elevation",
+      "filename": "python-3.11.9-amd64.exe",
+      "identity": "Python",
+      "installer_arguments": [
+        "/passive",
+        "/norestart",
+        "/log",
+        "<unique-vendor-log>",
+        "InstallAllUsers=0",
+        "TargetDir=<fixed-user-Python311>",
+        "PrependPath=0",
+        "AppendPath=0",
+        "Include_exe=1",
+        "Include_lib=1",
+        "Include_dev=1",
+        "Include_pip=1",
+        "Include_launcher=0",
+        "InstallLauncherAllUsers=0",
+        "AssociateFiles=0",
+        "Shortcuts=0",
+        "Include_doc=0",
+        "Include_test=0",
+        "Include_tcltk=0",
+        "Include_tools=0",
+        "Include_debug=0",
+        "Include_symbols=0",
+        "CompileAll=0"
+      ],
+      "license_evidence": "docs/installer-migration/work-orders/IM-PY-01.md",
+      "post_install_check": "native SSL/SQLite/compression, venv/ensurepip imports, Python.h/pyconfig.h/python311.lib and exact executable/base prefix",
+      "profile": "both",
+      "publisher": "Python Software Foundation",
+      "purpose": "exact x64 interpreter, headers and import libraries for native source build",
+      "reason": "Exact official Python 3.11.9 acquisition and consented ordinary-guest helper installation/capability verified (IM-PY-01/02). Explicit recipient terms consent remains mandatory; exact whole-wizard lifecycle qualification remains pending (IM-PY-04, IM-DEP-01).",
+      "reboot_behavior": "pending; only resume verification after actual reboot",
+      "reboot_exit_codes": [
+        3010
+      ],
+      "redirect_hosts": [
+        "www.python.org"
+      ],
+      "sha256": "5ee42c4eee1e6b4464bb23722f90b45303f79442df63083f05322f1785f5fdde",
+      "signature_publisher": "Python Software Foundation",
+      "success_exit_codes": [
+        0
+      ],
+      "terms_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+      "terms_url": "https://raw.githubusercontent.com/python/cpython/v3.11.9/LICENSE",
+      "url": "https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe",
+      "version": "3.11.9",
+      "winget_id": "Python.Python.3.11"
+    },
+    {
+      "architecture": "x64",
+      "delivery_classification": "SYSTEM_PROVIDED",
+      "detection": "nvidia-smi -L reports an NVIDIA GPU",
+      "identity": "NVIDIA GPU and driver",
+      "license_evidence": "Existing user-provided NVIDIA driver; this installer does not redistribute or install it.",
+      "post_install_check": "CTranslate2 CUDA device and float16 compute capability check",
+      "profile": "nvidia",
+      "publisher": "NVIDIA",
+      "purpose": "optional hardware inference",
+      "reason": "the setup does not install or replace a display driver",
+      "version": "compatible"
+    }
+  ],
+  "compiler": {
+    "bytes": 14304168,
+    "compiler_executable_bytes": 2135968,
+    "compiler_executable_sha256": "d06ebd38f38e3cee60a3c50cc45bd449d77e0bc6a5cabc607ea9886808e4de1a",
+    "delivery_classification": "SYSTEM_PROVIDED",
+    "identity": "Inno Setup 7.1.0 x64 compiler",
+    "license_evidence": "https://jrsoftware.org/files/is/license.txt",
+    "license_notice_path": "release/notices/inno-setup-7.1.0-LICENSE.txt",
+    "license_notice_sha256": "2e5346868c2a18434489824e11d65c3031620f792fefc415d05f19cd441abf5c",
+    "provenance_status": "local bytes match publisher API digest; Authenticode Valid, signer Pyrsys B.V.",
+    "sha256": "0362a383ed217d4c4239b5933866dd96d3eb2102737da92f80f6057a4b40df2f",
+    "url": "https://github.com/jrsoftware/issrc/releases/download/is-7_1_0/innosetup-7.1.0-x64.exe",
+    "version": "7.1.0"
+  },
+  "cpu_native_artifact": {
+    "bytes": 66665645,
+    "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+    "filename": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip",
+    "identity": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2",
+    "profile": "cpu",
+    "qualification_receipt_path": "notices-and-source/publisher-cpu/mvp-qualified-package-20261003-r1/consuming-component-receipt.json",
+    "qualification_receipt_sha256": "5abafe86105fa4fd234a8dc3e99c90d779808c135949f2b76e26c04ded89d488",
+    "redirect_hosts": [
+      "github.com",
+      "release-assets.githubusercontent.com"
+    ],
+    "runtime_id": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2",
+    "sha256": "46ee07feb45b12e31c83fd49283f2053c729ca6f2073326b11a036d7c609f437",
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip"
+  },
+  "external_assets": [
+    {
+      "architecture": "x64",
+      "bytes": 40561566,
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "verify extracted bin/libopenblas.dll SHA-256 in the selected native build receipt",
+      "filename": "OpenBLAS-0.3.30-x64.zip",
+      "identity": "OpenBLAS 0.3.30 x64",
+      "installer_arguments": [],
+      "kind": "openblas_archive",
+      "license_evidence": "notices-and-source/component-evidence",
+      "post_install_check": "verify bin/libopenblas.dll SHA-256 e824cf9fc22e5949807ce995a32e413a345fb97e63e6d10cfbf41aa86382193c and CTranslate2 CPU inference",
+      "profile": "both",
+      "purpose": "native CPU math library for recipient-built CTranslate2",
+      "reboot_behavior": "none",
+      "redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "sha256": "8b04387766efc05c627e26d24797ec0d4ed4c105ec14fa7400aa84a02db22b66",
+      "success_exit_codes": [],
+      "url": "https://github.com/OpenMathLib/OpenBLAS/releases/download/v0.3.30/OpenBLAS-0.3.30-x64.zip",
+      "version": "0.3.30"
+    },
+    {
+      "architecture": "x64",
+      "bytes": 25635768,
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "verify x64 VC runtime DLL versions and CTranslate2 CPU capability; registry presence alone is insufficient",
+      "filename": "VC_redist.x64.exe",
+      "identity": "Microsoft Visual C++ Redistributable x64",
+      "installer_arguments": [
+        "/install",
+        "/norestart"
+      ],
+      "kind": "microsoft_vc_redist_x64",
+      "license_evidence": "release/scripts/prerequisite-terms.json#vc-redist",
+      "post_install_check": "verify installed runtime DLLs and native CTranslate2 import/inference",
+      "profile": "both",
+      "purpose": "Microsoft runtime and VCOMP140 for native modules",
+      "reboot_behavior": "3010 requires restart and post-reboot capability check",
+      "redirect_hosts": [
+        "download.visualstudio.microsoft.com"
+      ],
+      "sha256": "cc0ff0eb1dc3f5188ae6300faef32bf5beeba4bdd6e8e445a9184072096b713b",
+      "signature_publisher": "Microsoft Corporation",
+      "success_exit_codes": [
+        0,
+        3010
+      ],
+      "url": "https://download.visualstudio.microsoft.com/download/pr/bd1c8d9d-ba95-4eee-bc6e-df1fcc876373/CC0FF0EB1DC3F5188AE6300FAEF32BF5BEEBA4BDD6E8E445A9184072096B713B/VC_redist.x64.exe",
+      "version": "14.44.35211.0"
+    },
+    {
+      "architecture": "x64",
+      "bytes": 396895858,
+      "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+      "detection": "verify wheel RECORD, exact installed DLL hashes and actual GPU inference",
+      "filename": "nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+      "identity": "NVIDIA cuBLAS 12.4.5.8 Windows x64 wheel",
+      "installer_arguments": [],
+      "kind": "python_wheel",
+      "license_evidence": "release/scripts/prerequisite-terms.json#cublas",
+      "post_install_check": "verify wheel RECORD, CUDA DLL loading and GPU inference",
+      "profile": "nvidia",
+      "purpose": "optional GPU inference runtime",
+      "reboot_behavior": "none",
+      "redirect_hosts": [
+        "files.pythonhosted.org"
+      ],
+      "review_status": "exact-v40 publisher route reviewed; new Inno consent and hardware installation unverified",
+      "sha256": "5a796786da89203a0657eda402bcdcec6180254a8ac22d72213abc42069522dc",
+      "success_exit_codes": [],
+      "url": "https://files.pythonhosted.org/packages/e2/2a/4f27ca96232e8b5269074a72e03b4e0d43aa68c9b965058b1684d07c6ff8/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl",
+      "version": "12.4.5.8"
+    }
+  ],
+  "native_build_assets": [],
+  "nvidia_native_artifact": {
+    "bytes": 114943752,
+    "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+    "filename": "autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip",
+    "identity": "win-x64-cp311-nvidia-cuda128-v1-20261003-r2",
+    "profile": "nvidia",
+    "qualification": "QUALIFIED_COMPONENT_DISTRIBUTION",
+    "qualification_receipt_path": "notices-and-source/publisher-nvidia/mvp-qualified-package-20261003-r1/consuming-component-receipt.json",
+    "qualification_receipt_sha256": "1b8b12e937f09ca9eb0c342db7a2ac76fb9023bdfc885d1bac92d61ce24cbbc0",
+    "redirect_hosts": [
+      "github.com",
+      "release-assets.githubusercontent.com"
+    ],
+    "runtime_id": "win-x64-cp311-nvidia-cuda128-v1-20261003-r2",
+    "sha256": "39f66da25a70447d241846de1a073a447aae7fd176ad4ce436ef0c53757dd678",
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip"
+  },
+  "publisher_wheels": {
+    "count": 75,
+    "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+    "license_evidence": "notices-and-source/legal-index.json",
+    "manifest_path": "publisher-wheel-manifest.json",
+    "redirect_hosts": [
+      "files.pythonhosted.org"
+    ],
+    "sha256": "27ebf705198df7fa351997b22a1f03366cf95330c3be8be86007eddac980381d"
+  },
+  "qualification": "QUALIFIED_COMPONENT_DISTRIBUTION",
+  "schema_version": 1,
+  "setup_payload": [],
+  "target_release": {
+    "bytes": 239383943,
+    "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
+    "distribution_inventory_sha256": "08b501ae8971c99c4d650369005f1f24125f27cb1b5fd1f9557fb0a0d28d6490",
+    "id": "v0.1.0-mvp-20261003-r1",
+    "manifest_sha256": "572a4fc6f9734331b484c8b3a3301f7dda6e2783695200962e2ba38bdd9a9970",
+    "prerequisite_terms_sha256": "6bac98278fe19233d0858e12cb27483967bbf9b3b4f83b97c4601253631cb4a0",
+    "redirect_hosts": [
+      "github.com",
+      "release-assets.githubusercontent.com"
+    ],
+    "review_scope": "Unpublished dual native artifact successor; NVIDIA QUALIFIED_COMPONENT_DISTRIBUTION",
+    "sha256": "a720dde04beacd287561bf43c0938dc5530feb801211dda416eb2a90ee6b86c4",
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-mvp-v0.1.0-20261003-r1.zip"
+  }
+}
