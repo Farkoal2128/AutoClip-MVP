@@ -70,7 +70,7 @@ foreach ($inputName in $inputNames) {
 Get-ChildItem -LiteralPath $releaseInputs -File | Get-FileHash -Algorithm SHA256
 ```
 
-Compare **all six hashes** with the table before continuing. Confirm the checkout is at the commit above and its `update-app.ps1` hash matches the downloaded file; the builder uses the updater from the checkout. The compiler also checks the runtime inventory, helper and notice inputs, and both native artifact graphs.
+Compare **all six hashes** with the table before continuing. Confirm the checkout is at the commit above and its root `update-app.ps1` hash matches the downloaded file; the builder uses the updater from that tagged checkout. In the current checkout, the updater is `installer/update-app.ps1`, the dependency manifest is `release/installer-dependencies-v1.json`, and the build guide is `docs/BUILDING.md`. The v1.0.0 tag retains the original paths. The compiler also checks the runtime inventory, helper and notice inputs, and both native artifact graphs.
 
 Set `$innoCompiler` to the installed compiler's actual path. From the release checkout, run:
 
@@ -92,4 +92,4 @@ if ($LASTEXITCODE -ne 0) { throw 'Distribution checks failed' }
 
 Use a new output directory. Outputs are `AutoClip-Setup-v1.exe` and `AutoClip-Setup-v1.receipt.json`; the executable includes installation and maintenance. CPU is the default, and NVIDIA remains selectable. Both native ZIPs are required for the unified installer. Do not use `--allow-local-candidate` for a distributable build.
 
-Before publishing a new build, test install, healthy update, failed-update rejection, rollback, owned uninstall, and preservation of unrelated files on the exact executable. Retain the receipt, hashes, logs, and test results. A successful compilation does not establish lifecycle acceptance or third-party redistribution rights. Do not replace immutable v1.0.0 assets with a local rebuild; use a new release identity for changed payloads. See [distribution requirements](docs/requirements/distribution.md) for successor packaging and [the v1.0.0 record](docs/releases/v1.0.0.md) for completed verification.
+Before publishing a new build, test install, healthy update, failed-update rejection, rollback, owned uninstall, and preservation of unrelated files on the exact executable. Retain the receipt, hashes, logs, and test results. A successful compilation does not establish lifecycle acceptance or third-party redistribution rights. Do not replace immutable v1.0.0 assets with a local rebuild; use a new release identity for changed payloads. See [distribution requirements](requirements/distribution.md) for successor packaging and [the v1.0.0 record](releases/v1.0.0.md) for completed verification.

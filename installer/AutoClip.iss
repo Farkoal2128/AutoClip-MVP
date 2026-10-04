@@ -141,8 +141,8 @@ Source: "verify-installed-app.ps1"; DestDir: "{app}"; Flags: ignoreversion dontc
 Source: "write-setup-receipt.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "uninstall-owned-release.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "remove-owned-file.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
-Source: "..\update.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
-Source: "..\update-app.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
+Source: "update.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
+Source: "update-app.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "initialize-selection.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "run-maintenance.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "{srcexe}"; DestDir: "{app}"; DestName: "AutoClip-Maintenance.exe"; Flags: external ignoreversion; Check: IsInstallMode

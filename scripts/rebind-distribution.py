@@ -34,7 +34,7 @@ def application_metadata(archive_raw, release_id):
         required_runtime=release_id, runtime_manifest_sha256=sha(inner),
         wheel_url=REPOSITORY + release_id + "/" + Path(wheels[0]).name,
         wheel_sha256=sha(wheel), wheel_size=len(wheel)))
-    updater = (ROOT / "update-app.ps1").read_bytes().decode("utf-8-sig")
+    updater = (ROOT / "installer/update-app.ps1").read_bytes().decode("utf-8-sig")
     updater,count = re.subn(r"(?m)^\$expectedManifestSha256 = '[^']*'",
         lambda _: "$expectedManifestSha256 = '" + sha(feed) + "'", updater)
     if count != 1:
@@ -78,7 +78,7 @@ def rebind(archive_raw, outer, bootstrap_raw, release_id, filename):
         outer[name]["url"] = destination
         release["native_build"][key] = copy.deepcopy(outer[name])
     # Retain the authenticated local installer contract in the operative updater.
-    files["update.ps1"] = (ROOT / "update.ps1").read_bytes()
+    files["update.ps1"] = (ROOT / "installer/update.ps1").read_bytes()
     for name, raw in list(files.items()):
         if name.startswith(("notices-and-source/publisher-cpu/", "notices-and-source/publisher-nvidia/")) and name.endswith("/README.md"):
             for old, new in urls.items():

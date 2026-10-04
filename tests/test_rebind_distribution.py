@@ -27,7 +27,7 @@ class RebindTests(unittest.TestCase):
         raw, policy, standalone = tool["rebind"](stream.getvalue(), outer, bootstrap, "mvp-v1", "mvp.zip")
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
             self.assertEqual(z.read("wheelhouse/app.whl"), b"exact app wheel")
-            self.assertEqual(z.read("update.ps1"), (ROOT / "update.ps1").read_bytes())
+            self.assertEqual(z.read("update.ps1"), (ROOT / "installer/update.ps1").read_bytes())
             result = json.loads(z.read("release-manifest.json"))
             for row in result["files"]:
                 data = z.read(row["path"])

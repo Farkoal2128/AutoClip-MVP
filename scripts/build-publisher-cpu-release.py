@@ -120,7 +120,6 @@ def build(*, base, base_sha256, outer, native, disposition, disposition_sha256,
         + native_url + '\n\nSHA-256: ' + identity['sha256'] + '\n').encode()
     controls = [Path(bootstrap), ROOT / 'scripts/build-publisher-cpu-release.py',
                 ROOT / 'scripts/verify-installer-manifest.py', ROOT / 'scripts/build-inno.py',
-                ROOT / 'update.ps1', ROOT / 'Start-AutoClip.ps1',
                 *sorted((ROOT / 'installer').glob('*.ps1')),
                 *sorted((ROOT / 'installer').glob('*.py')), ROOT / 'installer/AutoClip.iss']
     control_rows = []
@@ -135,7 +134,7 @@ def build(*, base, base_sha256, outer, native, disposition, disposition_sha256,
         publication_state='UNPUBLISHABLE_REVIEW_PENDING'))
     if set(additions) & set(files):
         raise ValueError('Successor evidence would overwrite existing history')
-    files['Start-AutoClip.ps1'] = additions[prefix + 'producer-inputs/Start-AutoClip.ps1']
+    files['Start-AutoClip.ps1'] = additions[prefix + 'producer-inputs/installer/Start-AutoClip.ps1']
     files.update(additions)
     release['native_build'] = dict(release['native_build'], delivery='publisher_cpu_with_source_nvidia', cpu_artifact=descriptor)
     if nvidia_native is not None:

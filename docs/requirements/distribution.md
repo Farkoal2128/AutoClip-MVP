@@ -10,6 +10,22 @@ validator and installed maintenance closure. Release packages, native archives
 and executables belong in immutable GitHub releases, outside source control.
 Original third-party notices and AutoClip MIT attribution remain intact.
 
+## Repository layout
+
+Keep the public bootstrap `install.ps1` and the published `app-release.json`
+feed at the repository root for existing callers. Keep README, LICENSE,
+CONTRIBUTING, and SECURITY there for project and GitHub discovery. Maintenance
+scripts and the runtime launcher template belong in `installer/`; the dependency
+manifest and third-party notice overview belong in `release/`; the build guide
+belongs in `docs/`. Build inputs, Inno source paths, packaging scripts, tests,
+and documentation links must use these checkout locations.
+
+Checkout organization must preserve the feed bytes, immutable release URLs,
+archive member names, installed helper names, and installed maintenance paths.
+The v1.0.0 tag and published assets retain their original layout and identities.
+
+## Distribution integrity
+
 Migrating a prepared package assigns a new immutable release identity and
 rebinds its operative native-artifact URLs to the new repository. Native
 runtime identities, artifact filenames, byte counts, hashes, qualification
@@ -58,7 +74,7 @@ assets as rollback and provenance references after consolidation.
 ## Maintainer build
 
 For the published v1.0.0 inputs, compiler identity, application build, and exact
-installer commands, use [BUILDING.md](../../BUILDING.md).
+installer commands, use [the build guide](../BUILDING.md).
 
 An owner-test app-only draft may target an already published compatible runtime
 without promoting the public app feed. Give it a unique app/release identity,
@@ -75,7 +91,7 @@ and NVIDIA component receipts. Use `scripts/rebind-distribution.py --help`
 for the pinned destination migration arguments. It emits the runtime ZIP,
 dependency manifest, bootstrap, app feed and matching app updater.
 
-Copy the generated `update-app.ps1` into the checkout before compiling. Pass
+Copy the generated `update-app.ps1` to `installer/update-app.ps1` before compiling. Pass
 the generated bootstrap explicitly; do not use the pending source default.
 With the exact local files named below, compile with:
 

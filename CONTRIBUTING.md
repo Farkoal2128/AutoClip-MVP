@@ -10,7 +10,7 @@ Use a branch for your change. Keep the scope small, preserve unrelated work, and
 
 ## Verification and pull requests
 
-Use [BUILDING.md](BUILDING.md) for Windows prerequisites and build commands. For installer or updater behavior changes, document the requirement, add the smallest meaningful failing test, implement the change, and verify that the test passes. Run the applicable distribution checks:
+Use [the build guide](docs/BUILDING.md) for Windows prerequisites and build commands. For installer or updater behavior changes, document the requirement, add the smallest meaningful failing test, implement the change, and verify that the test passes. Run the applicable distribution checks:
 
 ```powershell
 python -m unittest discover -s tests -v
@@ -24,10 +24,11 @@ Do not commit generated installers, runtime ZIPs, wheels, credentials, or person
 
 | Contributor | Role |
 | --- | --- |
-| Jad Ghazi ([Farkoal2128](https://github.com/Farkoal2128)) | Creator, maintainer, and release owner |
+| [Farkoal2128](https://github.com/Farkoal2128) | Repository owner, maintainer, and release owner of this derived Windows build |
+| [Jad Ghazi (@artbyjazi)](https://github.com/artbyjazi) | Author of the [original AutoClip](https://github.com/artbyjazi/autoclip), on which this build is based |
 | [Codex (@codex)](https://github.com/codex) | OpenAI AI development assistant contributing implementation, testing, packaging, and documentation assistance under the maintainer's direction |
 
-These credits acknowledge contributions to the project. Codex is credited as an AI assistant; maintainer responsibilities and release decisions remain with Jad Ghazi. For work produced with Codex, add this trailer after a blank line in the commit message:
+These credits acknowledge contributions to the project. Codex is credited as an AI assistant; maintainer responsibilities and release decisions remain with Farkoal2128. The existing copyright notice in LICENSE is preserved independently of these contributor roles. For work produced with Codex, add this trailer after a blank line in the commit message:
 
 ```text
 Co-authored-by: Codex <267193182+codex@users.noreply.github.com>
