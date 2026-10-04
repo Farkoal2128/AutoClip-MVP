@@ -42,6 +42,14 @@ failures must not prevent the prerequisite report from being written.
 
 ## Maintainer build
 
+An owner-test app-only draft may target an already published compatible runtime
+without promoting the public app feed. Give it a unique app/release identity,
+verify the exact wheel against its source archive and unchanged dependency
+metadata, and retain its compatibility/hash pins. Draft testing uses authenticated
+manual asset download followed by the installed app updater's existing
+`-ManifestPath` and `-WheelPath` inputs. Include explicit test and rollback
+instructions; do not redirect public defaults to draft-only assets.
+
 Keep exact archives/manifests and candidate output outside the Git checkout.
 Generate a successor from the currently published release inputs with
 `scripts/build-publisher-cpu-release.py`, supplying separately qualified CPU

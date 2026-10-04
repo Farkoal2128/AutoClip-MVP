@@ -20,8 +20,14 @@ changed only the preflight helper hash, setup/maintenance executable hashes and
 sizes, and the equivalent bootstrap's local input path. All other helper and
 artifact pins match the original tested build.
 
-This is a preflight-fix candidate for second-PC retest. Complete native lifecycle
-acceptance was not rerun on this executable; the prior public release's lifecycle
-record remains scoped to its original binary. SmartScreen signing is deferred:
-proper signing needs identity/certificate setup and cannot guarantee immediate
-reputation. No security protections were disabled. No VM or Computer Use occurred.
+The owner reported on 2026-10-03 that installation on the other machine completed
+successfully. This is user-reported acceptance; its executable hash and profile
+were not independently supplied or verified. Complete native lifecycle acceptance
+was not rerun on this executable; the prior public release's lifecycle record
+remains scoped to its original binary. This release remains a draft. The later
+Settings yt-dlp update button is packaged in a separate app-only owner-test draft;
+it is not present in this candidate's unchanged r1 application payload. See the
+[app update test instructions](v0.1.0-mvp-20261003-ytdlp-update1.md).
+
+The owner cancelled publisher signing because of its cost. No security protections
+were disabled. No VM or Computer Use occurred during this follow-up.
