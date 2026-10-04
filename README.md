@@ -4,11 +4,15 @@ Windows installer and maintenance files for AutoClip. This repository is the dis
 
 ## Download and install
 
-Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/AutoClip-Setup-v1.exe) from the [Windows MVP prerelease](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v0.1.0-mvp-20261003-r1). It passed exact package review and local CPU/NVIDIA installation lifecycle tests. See the [validation record](docs/releases/v0.1.0-mvp-20261003-r1.md) for evidence and coverage limits.
+Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Setup-v1.exe) from the [v1.0.0 release](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.0.0). This full Windows release consolidates the accepted prerequisite, yt-dlp settings and Twitch download fixes. See the [validation record](docs/releases/v1.0.0.md) for exact package and local test evidence.
 
 Run the installer and choose **Install AutoClip**. CPU is the default profile. The NVIDIA profile uses prebuilt native wheels and checks compatible GPU prerequisites. Review the prerequisite terms shown by Setup. **Launch AutoClip** on the final page opens the application.
 
-Run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
+For a v1.0.0 installation, run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
+
+### Updating an existing MVP or draft installation
+
+Download [AutoClip-Update-v1.0.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Update-v1.0.0.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.0.0 application with your installed updater. This retains the verified MVP runtime, installed maintenance files and previous application for rollback. The new installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
 
 ## What this repository contains
 

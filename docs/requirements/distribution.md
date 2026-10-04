@@ -40,6 +40,21 @@ prove capability availability: downloadable prerequisites remain missing, and
 missing system-provided prerequisites continue to block installation. Such probe
 failures must not prevent the prerequisite report from being written.
 
+The accepted drafts are consolidated into the public full release `v1.0.0`.
+Fresh installations receive the 1.0.0 wheel, source archive and existing exact
+qualified native artifacts. Existing r1/draft installations use the explicitly
+verified local application manifest/wheel with the installed app updater;
+include the exact r1 runtime manifest in compatibility metadata. Root-feed
+promotion alone does not refresh an older installed updater's immutable pin.
+Do not overwrite that installed receipt-bound helper to change its pin.
+
+Before presenting the install wizard or writing setup files, a new installer
+must refuse a different existing runtime/maintenance installation when its own
+release receipt is absent. Direct users to the application-update ZIP, preserving
+the installed runtime, maintenance helpers and rollback app. Same-release
+maintenance retains its existing receipt verification. Preserve earlier release
+assets as rollback and provenance references after consolidation.
+
 ## Maintainer build
 
 An owner-test app-only draft may target an already published compatible runtime

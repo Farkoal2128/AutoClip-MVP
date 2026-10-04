@@ -1009,10 +1009,10 @@ function Ensure-CudaPrerequisites {
 }
 
 
-$releaseUrl = 'https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-mvp-v0.1.0-20261003-r1.zip' # Promote only after the exact asset is published and verified.
-$expectedArchiveSha256 = 'a720dde04beacd287561bf43c0938dc5530feb801211dda416eb2a90ee6b86c4'
-$expectedManifestSha256 = '572a4fc6f9734331b484c8b3a3301f7dda6e2783695200962e2ba38bdd9a9970'
-$releaseId = 'v0.1.0-mvp-20261003-r1'
+$releaseUrl = 'https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-windows-v1.0.0.zip' # Promote only after the exact asset is published and verified.
+$expectedArchiveSha256 = '9dcb57506ab2246414e22dcc6ac664b7f4447ab6e04d22100b6dd5187fda037d'
+$expectedManifestSha256 = 'f265e2a1a11179a9060e38511c6836eee69c5aab157f4d4b8fbe1695da19c1c8'
+$releaseId = 'v1.0.0'
 
 if ($ReleaseInfo) {
     [pscustomobject]@{
@@ -1661,7 +1661,7 @@ try {
     Assert-AutoClipBuildCancellation
     & $python (Join-Path $InstallRoot 'verify-install-wheels.py') $wheelhouse $externalWheels --count $expectedWheelCount
     if ($LASTEXITCODE -ne 0) { throw 'Wheel ZIP or RECORD integrity check failed.' }
-    $autoclipPackage = if ($InstallNvidiaGpu) { 'autoclip[gpu-source]==0.1.0.dev0' } else { 'autoclip==0.1.0.dev0' }
+    $autoclipPackage = if ($InstallNvidiaGpu) { 'autoclip[gpu-source]==1.0.0' } else { 'autoclip==1.0.0' }
     Assert-AutoClipBuildCancellation
     & $uv.Source pip install --python $python --no-cache --offline --no-index --find-links $wheelhouse --find-links $externalWheels $autoclipPackage
     if ($LASTEXITCODE -ne 0) { throw 'Offline AutoClip installation failed.' }

@@ -22,7 +22,7 @@ $appStatePath = Join-Path $baseFull 'app-active.json'
 $launcherPath = Join-Path $baseFull 'Start-AutoClip.ps1'
 $desktopLauncherPath = Join-Path $baseFull 'Start-AutoClip-Desktop.ps1'
 $manifestUrl = 'https://raw.githubusercontent.com/Farkoal2128/AutoClip-MVP/main/app-release.json'
-$expectedManifestSha256 = '9648d4bce76f2ea2f0c3c0782cdfd868f96d6aabce64d1c30a48d8aa2667d236'
+$expectedManifestSha256 = 'dc5e92c165ed43bfe1dc077419588ccde1add78cbcf6056ce91d9651a394210a'
 
 function Acquire-SelectionMutex([string]$Base) {
     $full = [IO.Path]::GetFullPath($Base.Replace('/', '\')).TrimEnd('\')

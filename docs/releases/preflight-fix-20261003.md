@@ -1,5 +1,7 @@
 # Preflight fix candidate, 2026-10-03
 
+This historical record is superseded by [v1.0.0](v1.0.0.md). The owner requested removal of its draft/prerelease entry after verified consolidation; retained release assets and notices are listed in the v1.0.0 validation packet.
+
 The second-PC log identifies a stale Scoop FFmpeg shim whose target executable
 is missing. Windows PowerShell 5.1 promoted its redirected stderr to a terminating
 NativeCommandError, preventing the prerequisite report from being written.

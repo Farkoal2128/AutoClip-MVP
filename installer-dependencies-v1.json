@@ -170,7 +170,7 @@
     ],
     "runtime_id": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2",
     "sha256": "46ee07feb45b12e31c83fd49283f2053c729ca6f2073326b11a036d7c609f437",
-    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip"
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip"
   },
   "external_assets": [
     {
@@ -265,7 +265,7 @@
     ],
     "runtime_id": "win-x64-cp311-nvidia-cuda128-v1-20261003-r2",
     "sha256": "39f66da25a70447d241846de1a073a447aae7fd176ad4ce436ef0c53757dd678",
-    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip"
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip"
   },
   "publisher_wheels": {
     "count": 75,
@@ -281,18 +281,18 @@
   "schema_version": 1,
   "setup_payload": [],
   "target_release": {
-    "bytes": 239383943,
+    "bytes": 244908836,
     "delivery_classification": "DIRECT_RECIPIENT_DOWNLOAD",
-    "distribution_inventory_sha256": "08b501ae8971c99c4d650369005f1f24125f27cb1b5fd1f9557fb0a0d28d6490",
-    "id": "v0.1.0-mvp-20261003-r1",
-    "manifest_sha256": "572a4fc6f9734331b484c8b3a3301f7dda6e2783695200962e2ba38bdd9a9970",
+    "distribution_inventory_sha256": "aa91350f4df842d646896964875056d4a0f3f54b15832242c111213c36b1f94e",
+    "id": "v1.0.0",
+    "manifest_sha256": "f265e2a1a11179a9060e38511c6836eee69c5aab157f4d4b8fbe1695da19c1c8",
     "prerequisite_terms_sha256": "6bac98278fe19233d0858e12cb27483967bbf9b3b4f83b97c4601253631cb4a0",
     "redirect_hosts": [
       "github.com",
       "release-assets.githubusercontent.com"
     ],
     "review_scope": "Unpublished dual native artifact successor; NVIDIA QUALIFIED_COMPONENT_DISTRIBUTION",
-    "sha256": "a720dde04beacd287561bf43c0938dc5530feb801211dda416eb2a90ee6b86c4",
-    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v0.1.0-mvp-20261003-r1/autoclip-mvp-v0.1.0-20261003-r1.zip"
+    "sha256": "9dcb57506ab2246414e22dcc6ac664b7f4447ab6e04d22100b6dd5187fda037d",
+    "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-windows-v1.0.0.zip"
   }
 }

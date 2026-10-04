@@ -105,7 +105,7 @@
 SetupLogging=yes
 AppId={{D7451842-48F4-487B-80E0-5C7E9E326342}
 AppName=AutoClip
-AppVersion=1.0
+AppVersion=1.0.0
 DefaultDirName={localappdata}\AutoClip\Setup
 DefaultGroupName=AutoClip
 DisableProgramGroupPage=yes
@@ -758,6 +758,18 @@ begin
   end;
   if not ToolAvailable('Python') then
     Result := 'Python helper returned success but exact registered 3.11.9 x64 capability verification failed.';
+end;
+
+function InitializeSetup: Boolean;
+begin
+  Result := True;
+  if (FileExists(ExpandConstant('{localappdata}\AutoClip\active.json')) or
+      FileExists(ExpandConstant('{localappdata}\AutoClip\app-active.json')) or
+      FileExists(ExpandConstant('{localappdata}\AutoClip\Setup\unins000.exe'))) and
+     not FileExists(ExpandConstant('{localappdata}\AutoClip\Setup\installation-receipts\{#ReleaseId}.json')) then begin
+    SuppressibleMsgBox('A different AutoClip runtime is already installed. Close AutoClip and use AutoClip-Update-v1.0.0.zip from the v1.0.0 release to update the application with the installed updater. The existing installation has been preserved.', mbError, MB_OK, IDOK);
+    Result := False;
+  end;
 end;
 
 procedure InitializeWizard;
