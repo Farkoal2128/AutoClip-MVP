@@ -1,0 +1,4 @@
+# Installer receipts bind exact bytes; preserve them across Git checkouts.
+* -text whitespace=cr-at-eol
+# Keep the pinned Inno include verbatim, including its existing final blank line.
+installer/unified-maintenance.iss whitespace=cr-at-eol,-blank-at-eof
