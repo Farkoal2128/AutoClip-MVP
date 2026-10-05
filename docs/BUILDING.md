@@ -1,4 +1,20 @@
-# Building AutoClip v1.0.0 on Windows
+# Building AutoClip on Windows
+
+## v1.1.0 application-only successor
+
+The codec compatibility fix uses the unchanged v1.0.0 native runtime and the
+existing installed updater. No new Setup executable or native archives are
+produced. Download the v1.1.0 source and verify its hash against the immutable
+release's `SHA256SUMS` and `package-provenance.json`. Its SHA-256 is
+`cae9f307958319ad3175d3c7f6d0115c3b0faf8be9c8ae75e29c3c6ad47427db`.
+Use the application commands below with `autoclip-1.1.0.tar.gz` and the
+`autoclip-1.1.0` directory. The wheel must contain the built frontend and match
+the source archive. Dependencies and original component notices remain unchanged.
+See [the v1.1.0 record](releases/v1.1.0.md) for exact packaged identity and update
+validation. The following v1.0.0 installer instructions remain applicable to
+the unchanged installer/runtime, followed by the v1.1.0 application update ZIP.
+
+## v1.0.0 runtime and installer
 
 The application and installer have separate builds. The application source archive contains the editable backend and frontend. The installer compiles against the published runtime and native archives; it does not rebuild those dependencies.
 

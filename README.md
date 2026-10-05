@@ -4,6 +4,17 @@ Windows installer and maintenance files for AutoClip. This repository is the dis
 
 ## Download and install
 
+**Latest application update: [v1.1.0 — video codec compatibility fix](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.1.0).**
+Adds codec compatibility for previously unsupported video types and fixes missing
+clip-preview audio, including E-AC-3 audio in MKV files. Download
+[AutoClip-Update-v1.1.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/AutoClip-Update-v1.1.0.zip),
+quit AutoClip, extract it and follow `UPDATE.md`. Original media and saved clips
+are preserved. See the [v1.1.0 validation record](docs/releases/v1.1.0.md).
+
+This is an application-only update for v1.0.0 and MVP r1 installations. For a new
+machine, install the v1.0.0 runtime below, then apply the v1.1.0 update ZIP.
+Existing receipt-bound maintenance files and the native runtime remain unchanged.
+
 Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Setup-v1.exe) from the [v1.0.0 release](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.0.0). This full Windows release consolidates the accepted prerequisite, yt-dlp settings and Twitch download fixes. See the [validation record](docs/releases/v1.0.0.md) for exact package and local test evidence.
 
 Run the installer and choose **Install AutoClip**. CPU is the default profile. The NVIDIA profile uses prebuilt native wheels and checks compatible GPU prerequisites. Review the prerequisite terms shown by Setup. **Launch AutoClip** on the final page opens the application.
@@ -12,7 +23,7 @@ For a v1.0.0 installation, run the same installer again to choose **Update AutoC
 
 ### Updating an existing MVP or draft installation
 
-Download [AutoClip-Update-v1.0.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Update-v1.0.0.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.0.0 application with your installed updater. This retains the verified MVP runtime, installed maintenance files and previous application for rollback. The new installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
+Download [AutoClip-Update-v1.1.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/AutoClip-Update-v1.1.0.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.1.0 application with your installed updater. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The v1.0.0 installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
 
 ## What this repository contains
 
@@ -30,6 +41,11 @@ AutoClip-owned payload downloads and application-update metadata use this reposi
 The public `install.ps1` bootstrap and `app-release.json` update feed stay at the root so existing callers keep working. Installed helper names and release-asset filenames are independent of this checkout layout.
 
 ## Source code
+
+The latest [AutoClip v1.1.0 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/autoclip-1.1.0.tar.gz)
+includes the codec fix, editable frontend, bundled UI, dependency manifests and
+license. `package-provenance.json` records the exact application commit and the
+unchanged platform/desktop patch already shipped in v1.0.0.
 
 Download the [AutoClip v1.0.0 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-1.0.0.tar.gz). It includes the Python backend, editable React/TypeScript frontend, dependency manifests, and MIT license. Installer source is in this repository; the [v1.0.0 tag](https://github.com/Farkoal2128/AutoClip-MVP/tree/v1.0.0) contains the source used for the published installer.
 

@@ -73,6 +73,14 @@ assets as rollback and provenance references after consolidation.
 
 ## Maintainer build
 
+The v1.1.0 codec fix is an application-only successor for the accepted v1.0.0
+runtime and exact MVP r1 compatibility entry. Publish a new wheel, editable source,
+matching manifest, update ZIP, checksums and bounded validation record. Preserve
+the v1.0.0 installer/runtime assets, receipt-bound helpers and root feed so older
+installed immutable feed checks keep working. README directs users to the v1.1.0
+ZIP's explicit local manifest/wheel inputs. New users install v1.0.0 then apply
+the app update. No native rebuild or new installer qualification is implied.
+
 For the published v1.0.0 inputs, compiler identity, application build, and exact
 installer commands, use [the build guide](../BUILDING.md).
 
