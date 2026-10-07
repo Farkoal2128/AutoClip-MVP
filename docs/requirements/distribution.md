@@ -84,6 +84,14 @@ the app update. No native rebuild or new installer qualification is implied.
 For the published v1.0.0 inputs, compiler identity, application build, and exact
 installer commands, use [the build guide](../BUILDING.md).
 
+The v1.1.1 native-resolution hotfix follows the same app-only delivery route.
+Publish the exact qualified wheel/source, explicit compatibility manifest,
+update ZIP, checksums and honest snapshot/build provenance. Preserve the root
+feed, bootstrap and runtime/helper bytes. After publication and public-byte
+verification, direct README downloads to the v1.1.1 ZIP. Custom selectors and
+existing media/clip edits remain intact; higher-quality source needs a new
+download, with authenticated provider formats subject to configured cookies.
+
 An owner-test app-only draft may target an already published compatible runtime
 without promoting the public app feed. Give it a unique app/release identity,
 verify the exact wheel against its source archive and unchanged dependency
