@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "wheel_sha256": "f6de908e5736a076fc8ceee4e5609ecfc4653e03835a002b30d62c22cfbc2c23",
+  "runtime_fixtures": [
+    {
+      "runtime": "v1.0.0",
+      "updater_sha256": "dde9f456b52f1fb23a399c84373cb21c869bdea3e295600b0be8a627e2eaf7e8",
+      "update": "PASS",
+      "repeat": "NO_OP_PASS",
+      "corrupt": "REJECTED_WITH_STATE_UNCHANGED",
+      "failed_health": "REJECTED_WITH_STATE_UNCHANGED",
+      "rollback": "PASS",
+      "reapply": "PASS",
+      "runtime_and_canary": "UNCHANGED",
+      "packaged_smoke": {
+        "health": "PASS",
+        "home": "PASS",
+        "version": "1.1.1",
+        "packaged_eac3_mp4": "PASS",
+        "packaged_eac3_webm": "PASS",
+        "source_preserved": true
+      }
+    },
+    {
+      "runtime": "v0.1.0-mvp-20261003-r1",
+      "updater_sha256": "b19fca63e7831a6d2f2c53925466ae16281e55b24d3b39815a010bcc6b437063",
+      "update": "PASS",
+      "repeat": "NO_OP_PASS",
+      "corrupt": "REJECTED_WITH_STATE_UNCHANGED",
+      "failed_health": "REJECTED_WITH_STATE_UNCHANGED",
+      "rollback": "PASS",
+      "reapply": "PASS",
+      "runtime_and_canary": "UNCHANGED",
+      "packaged_smoke": {
+        "health": "PASS",
+        "home": "PASS",
+        "version": "1.1.1",
+        "packaged_eac3_mp4": "PASS",
+        "packaged_eac3_webm": "PASS",
+        "source_preserved": true
+      }
+    }
+  ],
+  "limits": [
+    "Isolated Windows host fixtures reuse development dependencies read-only; not a fresh pinned-native install",
+    "No VM, second-PC, GUI or shortcut lifecycle performed",
+    "No runtime, native dependency or maintenance helper replaced"
+  ]
+}

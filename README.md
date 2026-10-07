@@ -4,15 +4,21 @@ Windows installer and maintenance files for AutoClip. This repository is the dis
 
 ## Download and install
 
-**Latest application update: [v1.1.0 — video codec compatibility fix](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.1.0).**
-Adds codec compatibility for previously unsupported video types and fixes missing
-clip-preview audio, including E-AC-3 audio in MKV files. Download
-[AutoClip-Update-v1.1.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/AutoClip-Update-v1.1.0.zip),
+**Latest application update: [v1.1.1 — native-resolution download hotfix](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.1.1).**
+Downloads select the highest available native resolution and frame rate instead
+of capping at 1080p. The former default upgrades automatically; custom format
+selectors remain intact. Includes the v1.1.0 video/audio codec fixes. Download
+[AutoClip-Update-v1.1.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip),
 quit AutoClip, extract it and follow `UPDATE.md`. Original media and saved clips
-are preserved. See the [v1.1.0 validation record](docs/releases/v1.1.0.md).
+are preserved. See the [v1.1.1 validation record](docs/releases/v1.1.1.md).
+
+Twitch may require a signed-in session to expose 1440p source video. Select
+your signed-in browser in Settings under **YouTube / Twitch cookies from**,
+close that browser, and download again. Existing sources need a new download
+to obtain better quality. Export canvas and encoder settings are unchanged.
 
 This is an application-only update for v1.0.0 and MVP r1 installations. For a new
-machine, install the v1.0.0 runtime below, then apply the v1.1.0 update ZIP.
+machine, install the v1.0.0 runtime below, then apply the v1.1.1 update ZIP.
 Existing receipt-bound maintenance files and the native runtime remain unchanged.
 
 Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Setup-v1.exe) from the [v1.0.0 release](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.0.0). This full Windows release consolidates the accepted prerequisite, yt-dlp settings and Twitch download fixes. See the [validation record](docs/releases/v1.0.0.md) for exact package and local test evidence.
@@ -23,7 +29,7 @@ For a v1.0.0 installation, run the same installer again to choose **Update AutoC
 
 ### Updating an existing MVP or draft installation
 
-Download [AutoClip-Update-v1.1.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/AutoClip-Update-v1.1.0.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.1.0 application with your installed updater. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The v1.0.0 installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
+Download [AutoClip-Update-v1.1.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.1.1 application with your installed updater. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The v1.0.0 installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
 
 ## What this repository contains
 
@@ -42,10 +48,12 @@ The public `install.ps1` bootstrap and `app-release.json` update feed stay at th
 
 ## Source code
 
-The latest [AutoClip v1.1.0 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.0/autoclip-1.1.0.tar.gz)
-includes the codec fix, editable frontend, bundled UI, dependency manifests and
-license. `package-provenance.json` records the exact application commit and the
-unchanged platform/desktop patch already shipped in v1.0.0.
+The latest [AutoClip v1.1.1 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/autoclip-1.1.1.tar.gz)
+includes the native-resolution hotfix, prior codec fixes, editable frontend,
+bundled UI, dependency manifests and license. `package-provenance.json` records
+the explicit source snapshot, archive hashes and unchanged published
+platform/desktop bytes; `hotfix.patch` and `regression-tests.zip` document the
+bounded changes. The application snapshot is not a clean committed source tree.
 
 Download the [AutoClip v1.0.0 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/autoclip-1.0.0.tar.gz). It includes the Python backend, editable React/TypeScript frontend, dependency manifests, and MIT license. Installer source is in this repository; the [v1.0.0 tag](https://github.com/Farkoal2128/AutoClip-MVP/tree/v1.0.0) contains the source used for the published installer.
 

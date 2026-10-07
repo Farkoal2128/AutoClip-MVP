@@ -1,0 +1,77 @@
+{
+  "release_id": 405409743,
+  "release_tag": "v1.1.1",
+  "target_commit": "11da5ff43abbae53b3fd9b4c07070c169efebe7d",
+  "status": "PASS",
+  "assets": [
+    {
+      "name": "app-release.json",
+      "size": 608,
+      "sha256": "a6c1774acea6be8373fdd365930b72c5d347774aadcf2abbf4dc0bce9214548b",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "autoclip-1.1.1-py3-none-any.whl",
+      "size": 2121525,
+      "sha256": "f6de908e5736a076fc8ceee4e5609ecfc4653e03835a002b30d62c22cfbc2c23",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "autoclip-1.1.1.tar.gz",
+      "size": 5524329,
+      "sha256": "e227661a0167a3b213cee6f209e33a9e02dc18203df8379558c533f37554e3d5",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "AutoClip-Update-v1.1.1.zip",
+      "size": 2109578,
+      "sha256": "7bdd65c31df1467c1f792ef20528cf08cedaa6e2d680a2f796b7d953eedfaa53",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "hotfix.patch",
+      "size": 7828,
+      "sha256": "d3230b0875cff9e1ab4e2a55da85fa5d77e8a4d1231d23e991491237fda15072",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "package-provenance.json",
+      "size": 3040,
+      "sha256": "0136f4de20556dc37a6621e167d87dd42decef3d94bcccd0834f6c3e76dc0ca8",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "regression-tests.zip",
+      "size": 5422,
+      "sha256": "2ab85b0449fcbb541ad0188bf729128b98844ff339fb93fc6f1b3270464cb11a",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "release-validation.json",
+      "size": 3763,
+      "sha256": "5ea630b0f6d0e818d237b4264f041c85633286851e322e24352341a659a72814",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "SHA256SUMS",
+      "size": 883,
+      "sha256": "d1b8c5621aa077f81236d86c3a30eb0328d11fdec5b6f3993716728120a54e4b",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "update-validation.json",
+      "size": 1671,
+      "sha256": "6c7d267f9c29e8704c06d18adf1746980cee9259ac8582b6496a00641246af63",
+      "anonymous_download": "PASS"
+    },
+    {
+      "name": "UPDATE.md",
+      "size": 1899,
+      "sha256": "7bdd24392c4a2f1a590812003bdc1d37ecf28bf9a75e2d3a1454f4a452662ef9",
+      "anonymous_download": "PASS"
+    }
+  ],
+  "nested_zip": "PASS",
+  "public_root_feed": "UNCHANGED_PIN_PASS",
+  "authorization": "Anonymous downloads; no credentials or cookies"
+}
