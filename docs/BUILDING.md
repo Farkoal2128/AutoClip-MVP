@@ -10,11 +10,11 @@ SHA-256 values, to `scripts/rebind-distribution.py`:
 
 ```powershell
 python scripts/rebind-distribution.py `
-  --archive ../prior/autoclip-windows-v1.0.0.zip --archive-sha256 <verified-prior-archive-hash> `
-  --manifest ../prior/installer-dependencies-v1.json --manifest-sha256 <verified-prior-manifest-hash> `
-  --bootstrap ../prior/install.ps1 --bootstrap-sha256 <verified-prior-bootstrap-hash> `
-  --application-wheel ../app/autoclip-1.1.1-py3-none-any.whl --application-wheel-sha256 <verified-wheel-hash> `
-  --application-source ../app/autoclip-1.1.1.tar.gz --application-source-sha256 <verified-source-hash> `
+  --archive ../prior/autoclip-windows-v1.0.0.zip --archive-sha256 9dcb57506ab2246414e22dcc6ac664b7f4447ab6e04d22100b6dd5187fda037d `
+  --manifest ../prior/installer-dependencies-v1.json --manifest-sha256 ec103faa541bf0e84d5f601e1afb4e8c2f460238001a65ec940b2c0070dc08c0 `
+  --bootstrap ../prior/install.ps1 --bootstrap-sha256 f49aa32e57f10d5528d35b0df7e1531bd76f5c52c09ed701f0b647b0f354d07d `
+  --application-wheel ../app/autoclip-1.1.1-py3-none-any.whl --application-wheel-sha256 f6de908e5736a076fc8ceee4e5609ecfc4653e03835a002b30d62c22cfbc2c23 `
+  --application-source ../app/autoclip-1.1.1.tar.gz --application-source-sha256 e227661a0167a3b213cee6f209e33a9e02dc18203df8379558c533f37554e3d5 `
   --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
   --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
   --release-id v1.1.1 --filename autoclip-windows-v1.1.1.zip --output-dir ../release-inputs

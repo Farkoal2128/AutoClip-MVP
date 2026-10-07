@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "runtime": "v1.1.1",
+  "updater_sha256": "51ec65921c3c4147420bf62d5f27cac19dcc0d5cb787d111b339faa2eaaf2109",
+  "manifest_sha256": "e78011489fb5a0e726609269d658eb5b94ae11c6002f95f84b5a35d2c48f4092",
+  "results": [
+    {
+      "case": "public-default",
+      "status": "PASS"
+    },
+    {
+      "case": "repeat",
+      "status": "PASS"
+    },
+    {
+      "case": "rollback",
+      "status": "PASS"
+    },
+    {
+      "case": "reapply",
+      "status": "PASS"
+    }
+  ],
+  "baseline_preserved": true,
+  "limits": [
+    "Isolated Windows fixture reuses development dependencies read-only",
+    "The exact native installer lifecycle is recorded separately"
+  ]
+}

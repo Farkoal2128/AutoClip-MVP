@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "authentication": "None",
+  "assets": [
+    {
+      "name": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip",
+      "bytes": 66665645,
+      "sha256": "46ee07feb45b12e31c83fd49283f2053c729ca6f2073326b11a036d7c609f437",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip",
+      "bytes": 114943752,
+      "sha256": "39f66da25a70447d241846de1a073a447aae7fd176ad4ce436ef0c53757dd678",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoClip-Setup-v1.1.1.exe",
+      "bytes": 3449476,
+      "sha256": "e5b32e3b54072dff313725c7897193741c02bfdce4b7ba07ecaa4a1b2d7dbc44",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Setup-v1.1.1.exe",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoClip-Setup-v1.1.1.receipt.json",
+      "bytes": 6313,
+      "sha256": "0a0594f677cbce79b320d3f047b43c9d5c60a7fd32bf0d29851a92fcd85aa399",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Setup-v1.1.1.receipt.json",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-windows-v1.1.1.zip",
+      "bytes": 250442690,
+      "sha256": "a41e3512fd95be383cffbfa467b64b140679dd2730410b2c384a32af5f8dfa8a",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/autoclip-windows-v1.1.1.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-app-release-v1.1.1.json",
+      "bytes": 411,
+      "sha256": "e78011489fb5a0e726609269d658eb5b94ae11c6002f95f84b5a35d2c48f4092",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/installer-app-release-v1.1.1.json",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-bootstrap-v1.1.1.ps1",
+      "bytes": 426255,
+      "sha256": "e3fb0c5026d9e3258902d980fed180870358a9acb90795a6b87084d7e6a0dc48",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/installer-bootstrap-v1.1.1.ps1",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-dependencies-v1.1.1.json",
+      "bytes": 14596,
+      "sha256": "698cbe14e42e3a4987b834b8103868b03161bd547d59c8ed3b89f2d34449f077",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/installer-dependencies-v1.1.1.json",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-update-app-v1.1.1.ps1",
+      "bytes": 28679,
+      "sha256": "51ec65921c3c4147420bf62d5f27cac19dcc0d5cb787d111b339faa2eaaf2109",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/installer-update-app-v1.1.1.ps1",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-validation-v1.1.1.json",
+      "bytes": 9297,
+      "sha256": "ea28c7145b8e84f503ec521403d9845e942ccc1370cf1fd416e7ea8d04a3975e",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/installer-validation-v1.1.1.json",
+      "status": "PASS"
+    },
+    {
+      "name": "INSTALLER-SHA256SUMS",
+      "bytes": 1039,
+      "sha256": "04b8f378658334b4dd164901405bc8063648ceda6e276c8a1310b0c80af58811",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/INSTALLER-SHA256SUMS",
+      "status": "PASS"
+    }
+  ],
+  "source_commit": "c81be87c25095dcd41abd9791208fd9224a671a7"
+}

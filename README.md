@@ -4,32 +4,31 @@ Windows installer and maintenance files for AutoClip. This repository is the dis
 
 ## Download and install
 
-**Latest application update: [v1.1.1 — native-resolution download hotfix](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.1.1).**
+**Latest Windows release: [v1.1.1 — native-resolution download hotfix](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.1.1).**
 Downloads select the highest available native resolution and frame rate instead
 of capping at 1080p. The former default upgrades automatically; custom format
-selectors remain intact. Includes the v1.1.0 video/audio codec fixes. Download
-[AutoClip-Update-v1.1.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip),
-quit AutoClip, extract it and follow `UPDATE.md`. Original media and saved clips
-are preserved. See the [v1.1.1 validation record](docs/releases/v1.1.1.md).
+selectors remain intact. Includes the v1.1.0 video/audio codec fixes.
+For a new installation, download [AutoClip-Setup-v1.1.1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Setup-v1.1.1.exe).
+Setup installs v1.1.1 directly; no separate update is needed. Existing v1.0.0/MVP
+installations use the [update ZIP](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip)
+and instructions below. Original media and saved clips are preserved.
+See the [v1.1.1 validation record](docs/releases/v1.1.1.md).
 
 Twitch may require a signed-in session to expose 1440p source video. Select
 your signed-in browser in Settings under **YouTube / Twitch cookies from**,
 close that browser, and download again. Existing sources need a new download
 to obtain better quality. Export canvas and encoder settings are unchanged.
 
-This is an application-only update for v1.0.0 and MVP r1 installations. For a new
-machine, install the v1.0.0 runtime below, then apply the v1.1.1 update ZIP.
-Existing receipt-bound maintenance files and the native runtime remain unchanged.
-
-Download [AutoClip-Setup-v1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.0.0/AutoClip-Setup-v1.exe) from the [v1.0.0 release](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.0.0). This full Windows release consolidates the accepted prerequisite, yt-dlp settings and Twitch download fixes. See the [validation record](docs/releases/v1.0.0.md) for exact package and local test evidence.
+The app wheel and frontend match the verified v1.1.1 update package. Existing
+qualified CPU/NVIDIA components are reused without a native rebuild.
 
 Run the installer and choose **Install AutoClip**. CPU is the default profile. The NVIDIA profile uses prebuilt native wheels and checks compatible GPU prerequisites. Review the prerequisite terms shown by Setup. **Launch AutoClip** on the final page opens the application.
 
-For a v1.0.0 installation, run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
+For a v1.1.1 installation, run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
 
 ### Updating an existing MVP or draft installation
 
-Download [AutoClip-Update-v1.1.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.1.1 application with your installed updater. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The v1.0.0 installer refuses a different existing runtime before writing files; do not use it to migrate a prerelease installation.
+Download [AutoClip-Update-v1.1.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.1.1/AutoClip-Update-v1.1.1.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.1.1 application with your installed updater. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The new Setup refuses a different existing runtime before writing files; use the update ZIP for existing v1.0.0/MVP installations. A new v1.1.1 installation is already current and does not need this legacy-runtime ZIP.
 
 ## What this repository contains
 
@@ -59,7 +58,7 @@ Download the [AutoClip v1.0.0 application source](https://github.com/Farkoal2128
 
 ## Build and verification
 
-See [the build guide](docs/BUILDING.md) for exact v1.0.0 inputs and Windows build commands, and [distribution requirements](docs/requirements/distribution.md) for release rules. Installer builds require Windows, Python 3.11+, and the exact Inno Setup compiler recorded in the dependency manifest. A build receipt identifies the executable and every bundled helper. Local candidate builds do not establish publication readiness.
+See [the build guide](docs/BUILDING.md) for exact inputs, current Windows build commands and the required matching installer for every future public update, and [distribution requirements](docs/requirements/distribution.md) for release rules. Installer builds require Windows, Python 3.11+, and the exact Inno Setup compiler recorded in the dependency manifest. A build receipt identifies the executable and every bundled helper. Local candidate builds do not establish publication readiness.
 
 Release validation covers installation, a healthy update, rejection of a failed-health update, rollback, uninstall, and preservation of unrelated files. The release record states which machine and acquisition paths were tested. Local host results do not claim clean-machine or VM coverage.
 

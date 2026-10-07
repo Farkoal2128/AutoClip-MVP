@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "profile": "cpu",
+  "installer_sha256": "e5b32e3b54072dff313725c7897193741c02bfdce4b7ba07ecaa4a1b2d7dbc44",
+  "install": "PASS",
+  "version": "1.1.1",
+  "native_format": "bv*+ba/b",
+  "maintenance": [
+    {
+      "case": "healthy",
+      "label": "initial",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "healthy",
+      "label": "repeat",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "failed-health",
+      "label": "reject",
+      "native_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "rollback",
+      "label": "base",
+      "native_exit": 0,
+      "status": "PASS"
+    }
+  ],
+  "generated_uninstall": "PASS",
+  "removed_owned_files": 11221,
+  "remaining_owned_runtime_files": 0,
+  "unknown_file_preserved": true,
+  "registration_removed": true,
+  "baseline_preserved": true,
+  "retained": [
+    "Unknown/user-owned runtime canary",
+    "Receipt/anchor and operation logs outside the finite uninstall inventory",
+    "Application rollback layers and shared prerequisite/cache directories"
+  ],
+  "validation_correction": "The first post-uninstall harness assumed receipt removal; the receipt is retained audit metadata outside the owned uninstall inventory. Verified native completion, finite owned-file removal, registration/selection reset and exact preserved bytes instead.",
+  "limits": [
+    "Cached pinned native/prerequisite archives on existing Windows host",
+    "No clean-machine, VM, GUI Finish-launch, interrupted-install recovery or NVIDIA installation/inference qualification"
+  ]
+}
