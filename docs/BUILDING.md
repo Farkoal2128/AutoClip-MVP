@@ -1,5 +1,55 @@
 # Building AutoClip on Windows
 
+## Current and future installer releases
+
+Every public app update must include a full Setup for that version, plus the
+app-update ZIP for existing installations. Start with exact published runtime,
+dependency manifest and bootstrap bytes. Reuse unchanged qualified native archives.
+Supply the new wheel and matching editable source, with independently verified
+SHA-256 values, to `scripts/rebind-distribution.py`:
+
+```powershell
+python scripts/rebind-distribution.py `
+  --archive ../prior/autoclip-windows-v1.0.0.zip --archive-sha256 <verified-prior-archive-hash> `
+  --manifest ../prior/installer-dependencies-v1.json --manifest-sha256 <verified-prior-manifest-hash> `
+  --bootstrap ../prior/install.ps1 --bootstrap-sha256 <verified-prior-bootstrap-hash> `
+  --application-wheel ../app/autoclip-1.1.1-py3-none-any.whl --application-wheel-sha256 <verified-wheel-hash> `
+  --application-source ../app/autoclip-1.1.1.tar.gz --application-source-sha256 <verified-source-hash> `
+  --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
+  --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
+  --release-id v1.1.1 --filename autoclip-windows-v1.1.1.zip --output-dir ../release-inputs
+python scripts/build-inno.py `
+  --manifest ../release-inputs/installer-dependencies-v1.json `
+  --archive ../release-inputs/autoclip-windows-v1.1.1.zip `
+  --bootstrap ../release-inputs/install.ps1 `
+  --app-updater ../release-inputs/update-app.ps1 `
+  --app-manifest ../release-inputs/installer-app-release-v1.1.1.json `
+  --iscc ../inno/ISCC.exe `
+  --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
+  --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
+  --output-dir ../candidate
+python -m unittest discover -s tests -v
+```
+
+Replace the version and prior inputs for subsequent releases. Both output
+directories must be new. The packager replaces the sole app wheel, compares
+declared dependencies, verifies packaged app bytes against the source, retains
+native qualification scope and notices, and regenerates inventories and pins.
+A dependency change requires separate graph/component qualification.
+The compiler derives `AutoClip-Setup-v1.1.1.exe` and its displayed version from
+the wheel; a stale wheel, release mismatch or wrong updater/feed fails the build.
+Pass the generated updater without replacing the historical checkout updater.
+
+Publish the new runtime ZIP, both unchanged native archives at their rebound
+URLs, separately named dependency manifest/bootstrap, versioned installer feed,
+Setup, build receipt, validation and installer checksums. Keep already published
+app-only assets and root compatibility files unchanged. Future app-update
+manifests must list supported older full-runtime identities and exact manifest
+hashes. Test install/health, update/repeat, rejected update, rollback and generated
+uninstall with preservation checks on the exact candidate before publication;
+then verify anonymous download hashes and the public maintenance path before
+promoting README. See [v1.1.1](releases/v1.1.1.md) for exact delivered identities.
+
 ## v1.1.0 application-only successor
 
 The codec compatibility fix uses the unchanged v1.0.0 native runtime and the

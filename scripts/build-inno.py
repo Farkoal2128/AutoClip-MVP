@@ -10,6 +10,9 @@ import os
 import subprocess
 import sys
 import tempfile
+import io
+import re
+import zipfile
 from pathlib import Path
 
 
@@ -42,12 +45,38 @@ NOTICE_PINS = {
     "uv-0.12.19-LICENSE-MIT.txt": (1077, "860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c"),
     "uv-0.12.19-LICENSE-APACHE.txt": (11357, "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"),
 }
-OUTPUT_NAME = "AutoClip-Setup-v1"
 
 
 def digest(path):
     with path.open("rb") as source:
         return hashlib.file_digest(source, "sha256").hexdigest()
+
+
+def installer_version(archive_path, release_id):
+    with zipfile.ZipFile(archive_path) as archive:
+        names = [n for n in archive.namelist() if re.fullmatch(r"wheelhouse/autoclip-[^/]+\.whl", n)]
+        if len(names) != 1:
+            raise ValueError("Installer needs one exact application wheel")
+        match = re.fullmatch(r"wheelhouse/autoclip-(\d+\.\d+\.\d+)-py3-none-any\.whl", names[0])
+        if not match or release_id != "v" + match[1]:
+            raise ValueError("Installer release and application version differ")
+        version = match[1]
+        with zipfile.ZipFile(io.BytesIO(archive.read(names[0]))) as wheel:
+            metadata = wheel.read(f"autoclip-{version}.dist-info/METADATA").decode()
+            if not re.search(r"(?m)^Version: " + re.escape(version) + "$", metadata):
+                raise ValueError("Application wheel metadata version differs")
+    return version
+
+
+def verify_app_updater(feed_raw, updater_raw, release_id, version, wheel_sha256):
+    feed = json.loads(feed_raw)
+    url = f"https://github.com/Farkoal2128/AutoClip-MVP/releases/download/{release_id}/installer-app-release-{release_id}.json"
+    updater = updater_raw.decode("utf-8-sig")
+    if (feed["required_runtime"] != release_id or feed["wheel_sha256"] != wheel_sha256 or
+        not feed["wheel_url"].endswith(f"/autoclip-{version}-py3-none-any.whl") or
+        f"$manifestUrl = '{url}'" not in updater or
+        f"$expectedManifestSha256 = '{hashlib.sha256(feed_raw).hexdigest()}'" not in updater):
+        raise ValueError("Installer app updater/feed differs from packaged application")
 
 
 @contextmanager
@@ -78,6 +107,10 @@ def build(args):
     if os.name != "nt":
         raise ValueError("Inno candidate builds require Windows input sharing locks")
     bootstrap = getattr(args, "bootstrap", None) or BOOTSTRAP
+    app_updater = getattr(args, "app_updater", None) or APP_UPDATER
+    app_manifest = getattr(args, "app_manifest", None)
+    if bool(getattr(args, "app_updater", None)) != bool(app_manifest):
+        raise ValueError("A generated app updater requires its exact app manifest")
     native_artifact = getattr(args, "native_artifact", None)
     nvidia_native_artifact = getattr(args, "nvidia_native_artifact", None)
     inputs = (
@@ -85,11 +118,12 @@ def build(args):
         TOOL_ARCHIVE_HELPER, DOWNLOAD_HELPER, PYTHON_HELPER, MSYS_BASE_HELPER,
         MSYS_EXTRACTOR, MSYS_PACKAGES_HELPER, RUNTIME_TOOLPATH_HELPER,
         SOURCE_BUILD_HELPER, APP_HEALTH_HELPER, SETUP_RECEIPT_HELPER,
-        UNINSTALL_HELPER, REMOVAL_HELPER, UPDATER, APP_UPDATER,
+        UNINSTALL_HELPER, REMOVAL_HELPER, UPDATER, app_updater,
         INITIAL_SELECTION, MAINTENANCE_WORKER, MAINTENANCE_SOURCE,
         *(NOTICE.parent / name for name in (*NOTICE_PINS, "setup-tool-sources.md")),
         ROOT / "scripts" / "verify-installer-manifest.py", Path(__file__),
         *((native_artifact,) if native_artifact is not None else ()),
+        *((app_manifest,) if app_manifest is not None else ()),
         *((nvidia_native_artifact,) if nvidia_native_artifact is not None else ()),
         *((CPU_NATIVE_HELPER, VC_RUNTIME_HELPER) if native_artifact is not None or nvidia_native_artifact is not None else ()),
     )
@@ -105,6 +139,7 @@ def build_locked(args, pins):
     manifest = json.loads(manifest_bytes)
     verifier = ROOT / "scripts" / "verify-installer-manifest.py"
     bootstrap = getattr(args, "bootstrap", None) or BOOTSTRAP
+    app_updater = getattr(args, "app_updater", None) or APP_UPDATER
     native_artifact = getattr(args, "native_artifact", None)
     nvidia_native_artifact = getattr(args, "nvidia_native_artifact", None)
     if manifest.get("nvidia_native_artifact") is not None and (native_artifact is None or nvidia_native_artifact is None):
@@ -141,8 +176,21 @@ def build_locked(args, pins):
         notices.append({"path": f"notices/{name}", "bytes": size, "sha256": sha256})
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    output = args.output_dir / (OUTPUT_NAME + ".exe")
-    receipt = args.output_dir / (OUTPUT_NAME + ".receipt.json")
+    version = installer_version(args.archive, manifest["target_release"]["id"])
+    app_manifest = getattr(args, "app_manifest", None)
+    if version != "1.0.0" and app_manifest is None:
+        raise ValueError("New installers require the matching versioned app updater/feed")
+    if app_manifest is not None:
+        with zipfile.ZipFile(args.archive) as archive:
+            wheel = archive.read(f"wheelhouse/autoclip-{version}-py3-none-any.whl")
+            inner_sha256 = hashlib.sha256(archive.read("release-manifest.json")).hexdigest()
+        if json.loads(app_manifest.read_bytes())["runtime_manifest_sha256"] != inner_sha256:
+            raise ValueError("Installer app feed runtime manifest differs")
+        verify_app_updater(app_manifest.read_bytes(), app_updater.read_bytes(), manifest["target_release"]["id"], version,
+                           hashlib.sha256(wheel).hexdigest())
+    output_name = "AutoClip-Setup-v" + version
+    output = args.output_dir / (output_name + ".exe")
+    receipt = args.output_dir / (output_name + ".receipt.json")
     maintenance = args.output_dir / "AutoClip-Maintenance.exe"
     if output.exists() or receipt.exists() or maintenance.exists():
         raise ValueError("candidate or receipt already exists; use a new output directory")
@@ -162,6 +210,8 @@ def build_locked(args, pins):
         "ReleaseSha256": target["sha256"],
         "ReleaseManifestSha256": target["manifest_sha256"],
         "ReleaseId": target["id"],
+        "ApplicationVersion": version,
+        "AppUpdaterScriptPath": str(app_updater),
         "DependencyManifestSha256": pins[args.manifest],
         "BootstrapScriptPath": str(bootstrap),
         "DependencyManifestPath": str(args.manifest),
@@ -184,13 +234,13 @@ def build_locked(args, pins):
         "UninstallHelperSha256": pins[UNINSTALL_HELPER],
         "RemovalHelperSha256": pins[REMOVAL_HELPER],
         "UpdaterSha256": pins[UPDATER],
-        "AppUpdaterSha256": pins[APP_UPDATER],
+        "AppUpdaterSha256": pins[app_updater],
         "InitialSelectionSha256": pins[INITIAL_SELECTION],
         "MaintenanceWorkerSha256": pins[MAINTENANCE_WORKER],
         "SetupHelperRows": json.dumps([
             {"path": path.name, "bytes": path.stat().st_size, "sha256": pins[path]}
             for path in (UNINSTALL_HELPER, SETUP_RECEIPT_HELPER, REMOVAL_HELPER, SOURCE_BUILD_HELPER, UPDATER,
-                         APP_UPDATER, INITIAL_SELECTION, MAINTENANCE_WORKER)
+                         app_updater, INITIAL_SELECTION, MAINTENANCE_WORKER)
         ], separators=(",", ":")),
         "SetupNoticeRows": json.dumps(notices, separators=(",", ":")),
         "FfmpegSha256": ffmpeg.get("sha256", ""),
@@ -234,7 +284,7 @@ def build_locked(args, pins):
         ), encoding="utf-8")
         with read_locked(inventory):
             command = [str(args.iscc), f"--output-dir={args.output_dir}",
-                       f"--output-filename={OUTPUT_NAME}", f"--include={inventory}"]
+                       f"--output-filename={output_name}", f"--include={inventory}"]
             command.extend(f"--define={key}={value}" for key, value in defines.items())
             command.append(str(SOURCE))
             result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True,
@@ -247,6 +297,8 @@ def build_locked(args, pins):
     record = {
         "schema_version": 1,
         "qualification": "UNVERIFIED_CANDIDATE",
+        "application_version": version,
+        "release_id": target["id"],
         "archive_sha256": pins[args.archive],
         "manifest_sha256": pins[args.manifest],
         "iscc_sha256": pins[args.iscc],
@@ -266,7 +318,7 @@ def build_locked(args, pins):
         "uninstall_helper_sha256": pins[UNINSTALL_HELPER],
         "removal_helper_sha256": pins[REMOVAL_HELPER],
         "updater_sha256": pins[UPDATER],
-        "app_updater_sha256": pins[APP_UPDATER],
+        "app_updater_sha256": pins[app_updater],
         "initial_selection_sha256": pins[INITIAL_SELECTION],
         "maintenance_worker_sha256": pins[MAINTENANCE_WORKER],
         "maintenance_source_sha256": pins[MAINTENANCE_SOURCE],
@@ -287,6 +339,8 @@ def build_locked(args, pins):
                        "cpu_native_helper_sha256": pins[CPU_NATIVE_HELPER],
                        "vc_runtime_helper_sha256": pins[VC_RUNTIME_HELPER],
                        "bootstrap_path": str(bootstrap)})
+    if app_manifest is not None:
+        record["app_manifest_sha256"] = pins[app_manifest]
     if nvidia_native is not None:
         record.update({"qualification": "UNQUALIFIED_CANDIDATE" if nvidia_native["qualification"] == "UNQUALIFIED_CANDIDATE" else "UNVERIFIED_CANDIDATE",
                        "nvidia_qualification": nvidia_native["qualification"],
@@ -311,6 +365,8 @@ def main():
     parser.add_argument("--nvidia-native-artifact", type=Path)
     parser.add_argument("--allow-local-candidate", action="store_true")
     parser.add_argument("--bootstrap", type=Path)
+    parser.add_argument("--app-updater", type=Path)
+    parser.add_argument("--app-manifest", type=Path)
     args = parser.parse_args()
     try:
         build(args)

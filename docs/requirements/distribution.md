@@ -84,13 +84,25 @@ the app update. No native rebuild or new installer qualification is implied.
 For the published v1.0.0 inputs, compiler identity, application build, and exact
 installer commands, use [the build guide](../BUILDING.md).
 
-The v1.1.1 native-resolution hotfix follows the same app-only delivery route.
-Publish the exact qualified wheel/source, explicit compatibility manifest,
-update ZIP, checksums and honest snapshot/build provenance. Preserve the root
-feed, bootstrap and runtime/helper bytes. After publication and public-byte
-verification, direct README downloads to the v1.1.1 ZIP. Custom selectors and
-existing media/clip edits remain intact; higher-quality source needs a new
-download, with authenticated provider formats subject to configured cookies.
+Starting with v1.1.1, every public application update must also deliver a
+matching full Windows installer. Fresh installation must finish with that
+application version active, without a manual update. Compile Setup's version
+and filename from the packaged wheel and reject a release/version mismatch.
+Reuse unchanged qualified native components; update the application wheel,
+source, inventories, bootstrap requirement and exact integrity pins together.
+Keep app-update ZIPs for existing installations and refuse to overwrite their
+receipt-bound helpers. Higher-quality source needs a new download, with
+authenticated provider formats subject to configured cookies.
+
+The already published v1.1.1 app-only assets and historical root feed/bootstrap
+remain immutable for existing callers. Its full installer adds separately named
+runtime, dependency manifest, bootstrap, installer app feed, Setup and receipts
+to the same release. The new installer's updater uses its immutable versioned
+feed. Verify both profile graphs, the exact installer host lifecycle and public
+download hashes before advertising Setup. Future releases must include this
+installer work in their completion criteria; an app-only publication does not
+complete a public update. Subsequent app-update manifests include supported
+older full-runtime identities and their exact manifest hashes.
 
 An owner-test app-only draft may target an already published compatible runtime
 without promoting the public app feed. Give it a unique app/release identity,
@@ -107,8 +119,10 @@ and NVIDIA component receipts. Use `scripts/rebind-distribution.py --help`
 for the pinned destination migration arguments. It emits the runtime ZIP,
 dependency manifest, bootstrap, app feed and matching app updater.
 
-Copy the generated `update-app.ps1` to `installer/update-app.ps1` before compiling. Pass
-the generated bootstrap explicitly; do not use the pending source default.
+For historical v1.0.0 rebuilds, the checkout app updater matches its root feed.
+For successors, pass the generated updater and versioned app manifest to the
+builder as described in the current build guide. Pass the generated bootstrap
+explicitly; do not replace receipt-bound installed helpers or use a stale default.
 With the exact local files named below, compile with:
 
 ```powershell

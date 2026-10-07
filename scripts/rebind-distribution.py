@@ -6,6 +6,7 @@ import json
 import re
 import runpy
 import tempfile
+import tarfile
 import zipfile
 from pathlib import Path
 
@@ -21,7 +22,7 @@ def row(name, raw):
     return dict(path=name, bytes=len(raw), sha256=sha(raw))
 
 
-def application_metadata(archive_raw, release_id):
+def application_metadata(archive_raw, release_id, feed_name=None):
     with zipfile.ZipFile(io.BytesIO(archive_raw)) as archive:
         inner = archive.read("release-manifest.json")
         if json.loads(inner)["release_id"] != release_id:
@@ -39,7 +40,81 @@ def application_metadata(archive_raw, release_id):
         lambda _: "$expectedManifestSha256 = '" + sha(feed) + "'", updater)
     if count != 1:
         raise ValueError("App updater manifest pin missing or duplicated")
+    if feed_name is not None:
+        if not re.fullmatch(r"[a-zA-Z0-9._-]+\.json", feed_name):
+            raise ValueError("Unsafe app feed filename")
+        updater, count = re.subn(r"(?m)^\$manifestUrl = '[^']*'",
+            lambda _: "$manifestUrl = '" + REPOSITORY + release_id + "/" + feed_name + "'", updater)
+        if count != 1:
+            raise ValueError("App updater manifest URL missing or duplicated")
     return feed, updater.encode()
+
+
+def replace_application(archive_raw, bootstrap, wheel_name, wheel_raw, source_name, source_raw):
+    """Replace only the app; retain native component evidence and dependency graph."""
+    match = re.fullmatch(r"autoclip-(\d+\.\d+\.\d+)-py3-none-any\.whl", wheel_name)
+    if not match or source_name != "autoclip-" + match[1] + ".tar.gz":
+        raise ValueError("Application filenames/version differ")
+    version = match[1]
+    with zipfile.ZipFile(io.BytesIO(archive_raw)) as archive:
+        gate = PRODUCER["verifier"]()
+        for info in archive.infolist():
+            gate["check_zip_member"](info, "input package", archive)
+        files = {n:archive.read(n) for n in archive.namelist() if not n.endswith("/")}
+    release = json.loads(files.pop("release-manifest.json"))
+    if sorted(release["files"], key=lambda r:r["path"]) != [row(n,b) for n,b in sorted(files.items())]:
+        raise ValueError("Input package index differs")
+    old = [n for n in files if re.fullmatch(r"wheelhouse/autoclip-[^/]+\.whl", n)]
+    if len(old) != 1:
+        raise ValueError("Package must contain one exact AutoClip wheel")
+    old_version = old[0].split("/")[-1].split("-")[1]
+    with zipfile.ZipFile(io.BytesIO(wheel_raw)) as wheel, zipfile.ZipFile(io.BytesIO(files[old[0]])) as prior:
+        metadata = wheel.read(f"autoclip-{version}.dist-info/METADATA").decode()
+        previous = prior.read(f"autoclip-{old_version}.dist-info/METADATA").decode()
+        if not re.search(r"(?m)^Name: autoclip$", metadata) or not re.search(r"(?m)^Version: " + re.escape(version) + "$", metadata):
+            raise ValueError("Wheel metadata/version differs")
+        if sorted(re.findall(r"(?m)^Requires-Dist: .+$", metadata)) != sorted(re.findall(r"(?m)^Requires-Dist: .+$", previous)):
+            raise ValueError("Application dependencies changed; qualify a new dependency graph")
+        with tarfile.open(fileobj=io.BytesIO(source_raw), mode="r:gz") as source:
+            for name in wheel.namelist():
+                if name.startswith("autoclip/") and not name.endswith("/"):
+                    member = source.extractfile(f"autoclip-{version}/src/backend/{name}")
+                    if member is None or member.read() != wheel.read(name):
+                        raise ValueError("Source/wheel member differs: " + name)
+        for name in wheel.namelist():
+            if name.endswith("/LICENSE") or name.startswith("autoclip/assets/licenses/"):
+                files["notices-and-source/wheel-notices/" + wheel_name + "/" + name] = wheel.read(name)
+    files.pop(old[0])
+    files["wheelhouse/" + wheel_name] = wheel_raw
+    prefix = "notices-and-source/application/v" + version + "/"
+    if prefix + source_name in files:
+        raise ValueError("Application source already exists; use a new version")
+    files[prefix + source_name] = source_raw
+    application = dict(version=version, wheel=row(wheel_name, wheel_raw), source=row(source_name, source_raw),
+                       source_runtime_archive_sha256=sha(archive_raw),
+                       dependency_graph="Unchanged; native qualification remains scoped to original components")
+    release["application"] = application
+    files[prefix + "installer-provenance.json"] = encoded(application)
+    inventory = json.loads(files["distribution-inventory.json"])
+    inventory.update(autoclip_wheels=[wheel_name], application=application)
+    files["distribution-inventory.json"] = encoded(inventory)
+    packet_name = "notices-and-source/sbom-packet-manifest.json"
+    if packet_name in files:
+        packet = json.loads(files[packet_name])
+        names = {r["path"] for r in packet["files"]}
+        names.update(n for n in files if n.startswith(prefix) or n.startswith("notices-and-source/wheel-notices/" + wheel_name + "/"))
+        packet.update(files=[row(n,files[n]) for n in sorted(names)], file_count=len(names))
+        files[packet_name] = encoded(packet)
+    release["files"] = [row(n,b) for n,b in sorted(files.items())]
+    files["release-manifest.json"] = encoded(release)
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as archive:
+        for name, raw in sorted(files.items()):
+            archive.writestr(zipfile.ZipInfo(name, (2026,10,3,0,0,0)), raw, compress_type=zipfile.ZIP_DEFLATED)
+    requirement = ("==" + old_version).encode()
+    if bootstrap.count(requirement) != 2:
+        raise ValueError("Bootstrap application requirements missing or duplicated")
+    return output.getvalue(), bootstrap.replace(requirement, ("==" + version).encode())
 
 
 def rebind(archive_raw, outer, bootstrap_raw, release_id, filename):
@@ -138,6 +213,10 @@ def main():
     for name in ("archive-sha256", "manifest-sha256", "bootstrap-sha256", "release-id", "filename"):
         parser.add_argument("--" + name, required=True)
     parser.add_argument("--allow-local-candidate", action="store_true")
+    parser.add_argument("--application-wheel", type=Path)
+    parser.add_argument("--application-source", type=Path)
+    parser.add_argument("--application-wheel-sha256")
+    parser.add_argument("--application-source-sha256")
     args = parser.parse_args()
     inputs = [pinned(args.archive,args.archive_sha256), pinned(args.manifest,args.manifest_sha256), pinned(args.bootstrap,args.bootstrap_sha256)]
     gate = PRODUCER["verifier"]()
@@ -149,13 +228,21 @@ def main():
         archive.write_bytes(inputs[0]); policy.write_bytes(inputs[1])
         for profile in (("cpu","nvidia") if args.nvidia_native_artifact else ("cpu",)):
             gate["check"](policy,archive,profile,True,args.native_artifact,args.nvidia_native_artifact,args.allow_local_candidate)
-        result, manifest, bootstrap = rebind(inputs[0],json.loads(inputs[1]),inputs[2],args.release_id,args.filename)
+        candidate, bootstrap_input = inputs[0], inputs[2]
+        if any((args.application_wheel, args.application_source, args.application_wheel_sha256, args.application_source_sha256)):
+            if not all((args.application_wheel, args.application_source, args.application_wheel_sha256, args.application_source_sha256)):
+                raise ValueError("Application successor requires wheel, source and both exact hashes")
+            candidate, bootstrap_input = replace_application(candidate, bootstrap_input,
+                args.application_wheel.name, pinned(args.application_wheel,args.application_wheel_sha256),
+                args.application_source.name, pinned(args.application_source,args.application_source_sha256))
+        result, manifest, bootstrap = rebind(candidate,json.loads(inputs[1]),bootstrap_input,args.release_id,args.filename)
         archive.write_bytes(result); policy.write_bytes(encoded(manifest))
         for profile in (("cpu","nvidia") if args.nvidia_native_artifact else ("cpu",)):
             gate["check"](policy,archive,profile,True,args.native_artifact,args.nvidia_native_artifact,args.allow_local_candidate)
-        feed, updater = application_metadata(result,args.release_id)
+        feed_name = "installer-app-release-" + args.release_id + ".json" if args.application_wheel else "app-release.json"
+        feed, updater = application_metadata(result,args.release_id,feed_name if args.application_wheel else None)
         outputs = {args.filename:result,"installer-dependencies-v1.json":encoded(manifest),
-                   "install.ps1":bootstrap,"app-release.json":feed,"update-app.ps1":updater}
+                   "install.ps1":bootstrap,feed_name:feed,"update-app.ps1":updater}
         if args.output_dir.exists():
             raise ValueError("Use a new immutable output directory")
         args.output_dir.mkdir(parents=True)

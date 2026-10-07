@@ -105,7 +105,7 @@
 SetupLogging=yes
 AppId={{D7451842-48F4-487B-80E0-5C7E9E326342}
 AppName=AutoClip
-AppVersion=1.0.0
+AppVersion={#ApplicationVersion}
 DefaultDirName={localappdata}\AutoClip\Setup
 DefaultGroupName=AutoClip
 DisableProgramGroupPage=yes
@@ -142,7 +142,7 @@ Source: "write-setup-receipt.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check
 Source: "uninstall-owned-release.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "remove-owned-file.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "update.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
-Source: "update-app.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
+Source: "{#AppUpdaterScriptPath}"; DestName: "update-app.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "initialize-selection.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "run-maintenance.ps1"; DestDir: "{app}"; Flags: ignoreversion; Check: IsInstallMode
 Source: "{srcexe}"; DestDir: "{app}"; DestName: "AutoClip-Maintenance.exe"; Flags: external ignoreversion; Check: IsInstallMode
@@ -767,7 +767,7 @@ begin
       FileExists(ExpandConstant('{localappdata}\AutoClip\app-active.json')) or
       FileExists(ExpandConstant('{localappdata}\AutoClip\Setup\unins000.exe'))) and
      not FileExists(ExpandConstant('{localappdata}\AutoClip\Setup\installation-receipts\{#ReleaseId}.json')) then begin
-    SuppressibleMsgBox('A different AutoClip runtime is already installed. Close AutoClip and use AutoClip-Update-v1.0.0.zip from the v1.0.0 release to update the application with the installed updater. The existing installation has been preserved.', mbError, MB_OK, IDOK);
+    SuppressibleMsgBox('A different AutoClip runtime is already installed. Close AutoClip and use AutoClip-Update-v{#ApplicationVersion}.zip from the v{#ApplicationVersion} release to update the application with the installed updater. The existing installation has been preserved.', mbError, MB_OK, IDOK);
     Result := False;
   end;
 end;
