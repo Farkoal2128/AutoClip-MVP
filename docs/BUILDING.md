@@ -10,20 +10,20 @@ SHA-256 values, to `scripts/rebind-distribution.py`:
 
 ```powershell
 python scripts/rebind-distribution.py `
-  --archive ../prior/autoclip-windows-v1.0.0.zip --archive-sha256 9dcb57506ab2246414e22dcc6ac664b7f4447ab6e04d22100b6dd5187fda037d `
-  --manifest ../prior/installer-dependencies-v1.json --manifest-sha256 ec103faa541bf0e84d5f601e1afb4e8c2f460238001a65ec940b2c0070dc08c0 `
-  --bootstrap ../prior/install.ps1 --bootstrap-sha256 f49aa32e57f10d5528d35b0df7e1531bd76f5c52c09ed701f0b647b0f354d07d `
-  --application-wheel ../app/autoclip-1.1.1-py3-none-any.whl --application-wheel-sha256 f6de908e5736a076fc8ceee4e5609ecfc4653e03835a002b30d62c22cfbc2c23 `
-  --application-source ../app/autoclip-1.1.1.tar.gz --application-source-sha256 e227661a0167a3b213cee6f209e33a9e02dc18203df8379558c533f37554e3d5 `
+  --archive ../prior/autoclip-windows-v1.1.1.zip --archive-sha256 a41e3512fd95be383cffbfa467b64b140679dd2730410b2c384a32af5f8dfa8a `
+  --manifest ../prior/installer-dependencies-v1.1.1.json --manifest-sha256 698cbe14e42e3a4987b834b8103868b03161bd547d59c8ed3b89f2d34449f077 `
+  --bootstrap ../prior/installer-bootstrap-v1.1.1.ps1 --bootstrap-sha256 e3fb0c5026d9e3258902d980fed180870358a9acb90795a6b87084d7e6a0dc48 `
+  --application-wheel ../app/autoclip-1.2.0-py3-none-any.whl --application-wheel-sha256 5ab637c9481c4b24325cf390b6ecde8d487bd4dbe29f32b0de0db55d066ec824 `
+  --application-source ../app/autoclip-1.2.0.tar.gz --application-source-sha256 6f66ff9b5f9d425cf9e9dffde4020dee89a3c5ea130f3329d3a888f1edbfd05e `
   --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
   --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
-  --release-id v1.1.1 --filename autoclip-windows-v1.1.1.zip --output-dir ../release-inputs
+  --release-id v1.2.0 --filename autoclip-windows-v1.2.0.zip --output-dir ../release-inputs
 python scripts/build-inno.py `
   --manifest ../release-inputs/installer-dependencies-v1.json `
-  --archive ../release-inputs/autoclip-windows-v1.1.1.zip `
+  --archive ../release-inputs/autoclip-windows-v1.2.0.zip `
   --bootstrap ../release-inputs/install.ps1 `
   --app-updater ../release-inputs/update-app.ps1 `
-  --app-manifest ../release-inputs/installer-app-release-v1.1.1.json `
+  --app-manifest ../release-inputs/installer-app-release-v1.2.0.json `
   --iscc ../inno/ISCC.exe `
   --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
   --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
@@ -36,7 +36,7 @@ directories must be new. The packager replaces the sole app wheel, compares
 declared dependencies, verifies packaged app bytes against the source, retains
 native qualification scope and notices, and regenerates inventories and pins.
 A dependency change requires separate graph/component qualification.
-The compiler derives `AutoClip-Setup-v1.1.1.exe` and its displayed version from
+The compiler derives `AutoClip-Setup-v1.2.0.exe` and its displayed version from
 the wheel; a stale wheel, release mismatch or wrong updater/feed fails the build.
 Pass the generated updater without replacing the historical checkout updater.
 
@@ -48,7 +48,16 @@ manifests must list supported older full-runtime identities and exact manifest
 hashes. Test install/health, update/repeat, rejected update, rollback and generated
 uninstall with preservation checks on the exact candidate before publication;
 then verify anonymous download hashes and the public maintenance path before
-promoting README. See [v1.1.1](releases/v1.1.1.md) for exact delivered identities.
+promoting README. See [v1.2.0](releases/v1.2.0.md) for exact delivered identities.
+
+The v1.2.0 app source is a clean archive of application commit
+`9054f336f70f3b352e766ebcf1db1f792759dadb`, including the tracked bundled UI,
+contracts and tests. Extract `autoclip-1.2.0.tar.gz` and run
+`uv build --wheel autoclip-1.2.0 --out-dir ../app` to build from that source.
+The delivered wheel's 94 packaged application members match the source bytes;
+wheel archive timestamps can differ in a new build. The build receipt and
+`package-provenance.json` record the exact published inputs. CPU/NVIDIA archives
+retain their qualified identities and notices; this release changes the app.
 
 ## v1.1.0 application-only successor
 

@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "profile": "cpu",
+  "installer_sha256": "fc45bb3558a7de1b48df6625b5a74b219436c1f95214090a3fdd68a65cbcb798",
+  "install": "PASS",
+  "version": "1.2.0",
+  "native_format": "bv*+ba/b",
+  "maintenance": [
+    {
+      "case": "healthy",
+      "label": "initial",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "healthy",
+      "label": "repeat",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "failed-health",
+      "label": "reject",
+      "native_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "rollback",
+      "label": "base",
+      "native_exit": 0,
+      "status": "PASS"
+    }
+  ],
+  "generated_uninstall": "PASS",
+  "owned_files_removed": true,
+  "unknown_file_preserved": true,
+  "baseline_preserved": true,
+  "limits": [
+    "Cached pinned native/prerequisite archives on existing Windows host",
+    "No clean-machine, VM, GUI Finish-launch or NVIDIA installation/inference qualification"
+  ]
+}
