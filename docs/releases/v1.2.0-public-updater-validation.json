@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "runtime": "v1.0.0",
+      "updater_sha256": "dde9f456b52f1fb23a399c84373cb21c869bdea3e295600b0be8a627e2eaf7e8",
+      "status": "PASS",
+      "cases": [
+        "update",
+        "repeat",
+        "corrupt rejection",
+        "failed-health rejection",
+        "rollback",
+        "reapply",
+        "packaged app/home/authority"
+      ],
+      "baseline_preserved": true
+    },
+    {
+      "runtime": "v0.1.0-mvp-20261003-r1",
+      "updater_sha256": "b19fca63e7831a6d2f2c53925466ae16281e55b24d3b39815a010bcc6b437063",
+      "status": "PASS",
+      "cases": [
+        "update",
+        "repeat",
+        "corrupt rejection",
+        "failed-health rejection",
+        "rollback",
+        "reapply",
+        "packaged app/home/authority"
+      ],
+      "baseline_preserved": true
+    },
+    {
+      "runtime": "v1.1.1",
+      "updater_sha256": "51ec65921c3c4147420bf62d5f27cac19dcc0d5cb787d111b339faa2eaaf2109",
+      "status": "PASS",
+      "cases": [
+        "update",
+        "repeat",
+        "corrupt rejection",
+        "failed-health rejection",
+        "rollback",
+        "reapply",
+        "packaged app/home/authority"
+      ],
+      "baseline_preserved": true
+    },
+    {
+      "runtime": "v1.2.0",
+      "updater_sha256": "ea6893a36e93fa9d0eaef5c75271a578b10dd1a2b9c77254f7ad24c5f7cef0b7",
+      "status": "PASS",
+      "cases": [
+        "update",
+        "repeat",
+        "corrupt rejection",
+        "failed-health rejection",
+        "rollback",
+        "reapply",
+        "packaged app/home/authority"
+      ],
+      "baseline_preserved": true
+    }
+  ],
+  "limits": [
+    "Isolated Windows host fixtures borrow development dependencies read-only",
+    "Exact native CPU Setup lifecycle recorded separately"
+  ]
+}

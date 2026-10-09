@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "authentication": "None",
+  "assets": [
+    {
+      "name": "app-release.json",
+      "bytes": 886,
+      "sha256": "c2c64631c0070ffa360d71a00286c74506cdc80a61bb532966f5ad2f7b758d00",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/app-release.json",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-1.2.0-py3-none-any.whl",
+      "bytes": 2123050,
+      "sha256": "5ab637c9481c4b24325cf390b6ecde8d487bd4dbe29f32b0de0db55d066ec824",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-1.2.0-py3-none-any.whl",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-1.2.0.tar.gz",
+      "bytes": 5835428,
+      "sha256": "6f66ff9b5f9d425cf9e9dffde4020dee89a3c5ea130f3329d3a888f1edbfd05e",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-1.2.0.tar.gz",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip",
+      "bytes": 66665645,
+      "sha256": "46ee07feb45b12e31c83fd49283f2053c729ca6f2073326b11a036d7c609f437",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip",
+      "bytes": 114943752,
+      "sha256": "39f66da25a70447d241846de1a073a447aae7fd176ad4ce436ef0c53757dd678",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoClip-Setup-v1.2.0.exe",
+      "bytes": 3449449,
+      "sha256": "fc45bb3558a7de1b48df6625b5a74b219436c1f95214090a3fdd68a65cbcb798",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Setup-v1.2.0.exe",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoClip-Setup-v1.2.0.receipt.json",
+      "bytes": 6309,
+      "sha256": "cae1dcae2925c2784c8a4cdb0f1ac500001ed59f311aebee8a0c0346466d3e51",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Setup-v1.2.0.receipt.json",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoClip-Update-v1.2.0.zip",
+      "bytes": 2110570,
+      "sha256": "4e08c0b45f1ecbbad148fcb919bc3ed79b80cdcb298300c3fad0e2afc8aea484",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Update-v1.2.0.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "autoclip-windows-v1.2.0.zip",
+      "bytes": 256282637,
+      "sha256": "cb95b9f8ad6830ea51b1a5e416602bbe5c2381c7d7debadfd64d67cdfeb4f27e",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-windows-v1.2.0.zip",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-app-release-v1.2.0.json",
+      "bytes": 411,
+      "sha256": "04b32d2cdd86a070f3ba69064f403fd1e434d4ce48c15a1892444325264c5eb2",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/installer-app-release-v1.2.0.json",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-bootstrap-v1.2.0.ps1",
+      "bytes": 426255,
+      "sha256": "7c1970ff28629ba2c9bae301ddf600123778ab735a4a4ebb9d60daa0adbdb23f",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/installer-bootstrap-v1.2.0.ps1",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-dependencies-v1.2.0.json",
+      "bytes": 14596,
+      "sha256": "dab9b16182222974549a6e16b2ff10eb7d6f8916450827db9783416fab8effdb",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/installer-dependencies-v1.2.0.json",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-update-app-v1.2.0.ps1",
+      "bytes": 28679,
+      "sha256": "ea6893a36e93fa9d0eaef5c75271a578b10dd1a2b9c77254f7ad24c5f7cef0b7",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/installer-update-app-v1.2.0.ps1",
+      "status": "PASS"
+    },
+    {
+      "name": "installer-validation-v1.2.0.json",
+      "bytes": 1033,
+      "sha256": "12cc594eefcfcb97308c32a3965bd32c83146daef28ce21bff3706da4fadc99d",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/installer-validation-v1.2.0.json",
+      "status": "PASS"
+    },
+    {
+      "name": "package-provenance.json",
+      "bytes": 3134,
+      "sha256": "7bef0eea3671257bfb134d095a93d294f00e396cb28de54d90d78607f9a142c6",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/package-provenance.json",
+      "status": "PASS"
+    },
+    {
+      "name": "release-validation.json",
+      "bytes": 18138,
+      "sha256": "fed73755bd64dc9a554690cdb26cd4d8a797e5293cd6ca4831eb8165204027f7",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/release-validation.json",
+      "status": "PASS"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 1754,
+      "sha256": "2b29e019836681c746b2ba8f892b6fda01ebbfa2e580e040825cb4353225ae0a",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/SHA256SUMS",
+      "status": "PASS"
+    },
+    {
+      "name": "update-validation.json",
+      "bytes": 1853,
+      "sha256": "d4aa0501e8447def718ce316f25b165832e53ec26ea81df82760c7dab8e8e95d",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/update-validation.json",
+      "status": "PASS"
+    },
+    {
+      "name": "UPDATE.md",
+      "bytes": 1246,
+      "sha256": "7cfaa69dff7230ecb1027eb302b7129d7c205d2e93143ee33b199846aba31246",
+      "url": "https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/UPDATE.md",
+      "status": "PASS"
+    }
+  ],
+  "source_commit": "9054f336f70f3b352e766ebcf1db1f792759dadb",
+  "nested_update_zip": "PASS",
+  "runtime_member_inventory": "PASS",
+  "runtime_members_checked": 1284,
+  "runtime_embedded_source_and_wheel": "PASS",
+  "release_checksums": "PASS",
+  "historical_public_root_hashes": {
+    "install.ps1": "f49aa32e57f10d5528d35b0df7e1531bd76f5c52c09ed701f0b647b0f354d07d",
+    "app-release.json": "dc5e92c165ed43bfe1dc077419588ccde1add78cbcf6056ce91d9651a394210a"
+  }
+}
