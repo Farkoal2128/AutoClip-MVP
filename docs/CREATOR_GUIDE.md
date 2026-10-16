@@ -7,7 +7,7 @@ captioned clips for social media. Platform support here describes v1.2.0.
 ## Start with a recording
 
 1. [Download the Windows installer](https://github.com/Farkoal2128/AutoClip-MVP/releases/latest) and follow the [installation instructions](../README.md#download-and-install).
-2. Choose a highlight provider in Settings. Ollama provides local AI; supported cloud providers require their own configuration and may incur charges.
+2. Open the **Settings** tab to enter your API key for **Anthropic, OpenAI, or Gemini**, choose your highlight provider, and set its model. Cloud usage may incur charges; Ollama provides local AI without a cloud API key.
 3. Add a supported YouTube video URL, a completed Twitch VOD URL, or a local media file.
 4. Transcribe the source and generate suggested highlights. Speech recognition and AI suggestions can be wrong, so listen and review each candidate.
 5. Adjust cuts, correct captions, and choose the framing in Review and Layout.
@@ -15,6 +15,13 @@ captioned clips for social media. Platform support here describes v1.2.0.
 
 The Windows installer is the simplest entry point. Developer builds and
 application source downloads are documented in the [repository README](../README.md#source-code).
+
+### Which AI model should I use?
+
+The maintainer has mainly tested AutoClip with **OpenAI** and recommends
+**`gpt-6-luna`**. There are no maintainer model recommendations for Anthropic or
+Gemini; explore their available models and pricing to find a cost-effective
+option for your needs.
 
 ## Twitch VOD to TikTok, Instagram Reels, or YouTube Shorts
 
