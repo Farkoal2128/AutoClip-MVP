@@ -1,6 +1,90 @@
-# AutoClip for Windows
+# AutoClip — AI Video Clipper for Twitch, YouTube & Short-Form Content
 
-Windows installer and maintenance files for AutoClip. This repository is the distribution home for future Windows releases.
+**Open-source, local-first video clipping software for Windows.** Turn Twitch
+VODs, YouTube videos, and local recordings into captioned highlights for
+**YouTube Shorts, TikTok, Instagram Reels, and Facebook Reels**.
+
+AutoClip transcribes your recording, uses AI to suggest highlight clips, lets
+you review and edit them, and exports MP4 video. Streamers can repurpose past
+broadcasts; podcasters, educators, and other creators can cut long-form videos
+into short-form content. Run highlight selection locally with Ollama or choose
+a supported cloud AI provider.
+
+**[Download AutoClip for Windows](https://github.com/Farkoal2128/AutoClip-MVP/releases/latest)**
+· [Creator guide](docs/CREATOR_GUIDE.md)
+· [Platform support](#streaming-platforms-and-video-sources)
+· [Questions and answers](#frequently-asked-questions)
+
+## Make short clips from long videos
+
+- **AI highlight detection:** find candidate moments in spoken content, then review the suggestions yourself.
+- **Automatic captions:** transcribe with Whisper, edit captions, and burn styled subtitles into your clips; optional SRT subtitle files are available at export.
+- **Vertical video editing:** export 9:16 clips, or choose 1:1 square and 16:9 landscape. Automatic reframing uses a centered crop; the manual Layout editor handles custom framing.
+- **Local AI workflow:** use Whisper and Ollama for local processing without a paid AI API. Optional cloud providers receive transcript text for highlight selection.
+- **Windows desktop app:** use the local browser interface with CPU processing or the optional NVIDIA installation profile.
+
+## Streaming platforms and video sources
+
+| Source | How to use it with AutoClip |
+| --- | --- |
+| Twitch VODs / past broadcasts | Paste a Twitch VOD URL such as `https://www.twitch.tv/videos/123456789`. Live channel pages and Twitch clip URLs are not accepted as direct sources. |
+| YouTube videos / completed livestream replays | Paste a YouTube video URL. The recording must be available and downloadable; access restrictions can require your signed-in browser cookies. |
+| Kick streams and clips | Import a compatible local recording or downloaded clip you have permission to use. Direct Kick URL import is not supported in v1.2.0. |
+| Facebook Live, TikTok LIVE, Instagram Live, and other broadcasts | Import a compatible local recording. These services do not have direct URL integrations in v1.2.0. |
+| OBS Studio / Streamlabs recordings | Import the saved video file, for example MP4, MKV, MOV, or WebM. Media must pass the app's validation. |
+| Video podcasts, interviews, webinars, tutorials, and gaming recordings | Import your local video, or use a supported YouTube URL, to select and edit excerpts. |
+
+AutoClip processes recorded media after the broadcast. It does not monitor
+live channels or automatically capture a stream while you are live.
+
+## Export for Shorts, Reels, TikTok, and other social video
+
+Choose **9:16 vertical video** for a typical YouTube Shorts, Instagram Reels,
+TikTok, or Facebook Reels workflow. Use square or landscape exports when those
+better fit your composition. Other destinations, including Snapchat Spotlight,
+X, and LinkedIn video, may also accept your exported file; check their current
+upload requirements before posting.
+
+You review the finished MP4 and upload it yourself. AutoClip does not include
+direct social publishing, scheduling, or automatic cross-posting. Aspect ratio
+alone does not guarantee that a destination will accept a file.
+
+See the [creator guide](docs/CREATOR_GUIDE.md) for Twitch-to-TikTok,
+YouTube-to-Shorts, Kick-recording, and podcast-clipping workflows.
+
+## Frequently asked questions
+
+### Is AutoClip free and open source?
+
+AutoClip-authored code is MIT licensed. There is no AutoClip subscription or
+export watermark. Local AI can run without paid API usage; optional cloud AI
+services may charge their own fees. Third-party components retain their licenses.
+
+### Can I turn a Twitch stream into YouTube Shorts or TikToks?
+
+Yes: import the completed Twitch VOD, generate and review candidate highlights,
+adjust the vertical layout and captions, then export and upload the clips.
+
+### Can I use AutoClip as a Kick clip maker?
+
+Use a compatible local Kick recording or downloaded clip you are authorized to
+edit. AutoClip does not accept Kick URLs directly. The same local-file approach
+applies to recordings from other streaming platforms.
+
+### Does AutoClip upload my videos to an AI service?
+
+Video and audio processing run locally. Cloud highlight providers receive
+transcript text when selected. Choose Ollama for local highlight selection;
+initial setup, model downloads, and remote video ingestion still need network access.
+
+### Will AI find every great gaming moment or guarantee viral clips?
+
+No. Highlight selection uses the transcript and can miss visual-only gameplay,
+silent reactions, or other moments. Review the suggestions before exporting;
+views and audience growth are not guaranteed.
+
+This repository provides the Windows installer, updates, and maintenance
+source. The released application source is available below.
 
 ## Download and install
 
