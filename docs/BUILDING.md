@@ -1,5 +1,9 @@
 # Building AutoClip on Windows
 
+The [v1.2.1 candidate record](releases/v1.2.1.md) identifies the new installer,
+update ZIP, exact source and current qualification limits. Published v1.2.0
+inputs and historical build commands below remain valid until promotion.
+
 ## Current and future installer releases
 
 Every public app update must include a full Setup for that version, plus the
