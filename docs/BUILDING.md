@@ -1,8 +1,7 @@
 # Building AutoClip on Windows
 
-The [v1.2.1 candidate record](releases/v1.2.1.md) identifies the new installer,
-update ZIP, exact source and current qualification limits. Published v1.2.0
-inputs and historical build commands below remain valid until promotion.
+The [v1.2.1 release record](releases/v1.2.1.md) identifies the matching installer,
+update ZIP, exact source, native lifecycle evidence and qualification limits.
 
 ## Current and future installer releases
 
@@ -14,20 +13,20 @@ SHA-256 values, to `scripts/rebind-distribution.py`:
 
 ```powershell
 python scripts/rebind-distribution.py `
-  --archive ../prior/autoclip-windows-v1.1.1.zip --archive-sha256 a41e3512fd95be383cffbfa467b64b140679dd2730410b2c384a32af5f8dfa8a `
-  --manifest ../prior/installer-dependencies-v1.1.1.json --manifest-sha256 698cbe14e42e3a4987b834b8103868b03161bd547d59c8ed3b89f2d34449f077 `
-  --bootstrap ../prior/installer-bootstrap-v1.1.1.ps1 --bootstrap-sha256 e3fb0c5026d9e3258902d980fed180870358a9acb90795a6b87084d7e6a0dc48 `
-  --application-wheel ../app/autoclip-1.2.0-py3-none-any.whl --application-wheel-sha256 5ab637c9481c4b24325cf390b6ecde8d487bd4dbe29f32b0de0db55d066ec824 `
-  --application-source ../app/autoclip-1.2.0.tar.gz --application-source-sha256 6f66ff9b5f9d425cf9e9dffde4020dee89a3c5ea130f3329d3a888f1edbfd05e `
+  --archive ../prior/autoclip-windows-v1.2.0.zip --archive-sha256 cb95b9f8ad6830ea51b1a5e416602bbe5c2381c7d7debadfd64d67cdfeb4f27e `
+  --manifest ../prior/installer-dependencies-v1.2.0.json --manifest-sha256 dab9b16182222974549a6e16b2ff10eb7d6f8916450827db9783416fab8effdb `
+  --bootstrap ../prior/installer-bootstrap-v1.2.0.ps1 --bootstrap-sha256 7c1970ff28629ba2c9bae301ddf600123778ab735a4a4ebb9d60daa0adbdb23f `
+  --application-wheel ../app/autoclip-1.2.1-py3-none-any.whl --application-wheel-sha256 3e36008613e60e189a4903230718addd57fd56d3fbbf0f62a7382aaa87ff0d4c `
+  --application-source ../app/autoclip-1.2.1.tar.gz --application-source-sha256 08314ccb280e1eb4de2e367a36800ef1599b2c6910d02a8226cf82019bbebba1 `
   --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
   --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
-  --release-id v1.2.0 --filename autoclip-windows-v1.2.0.zip --output-dir ../release-inputs
+  --release-id v1.2.1 --filename autoclip-windows-v1.2.1.zip --output-dir ../release-inputs
 python scripts/build-inno.py `
   --manifest ../release-inputs/installer-dependencies-v1.json `
-  --archive ../release-inputs/autoclip-windows-v1.2.0.zip `
+  --archive ../release-inputs/autoclip-windows-v1.2.1.zip `
   --bootstrap ../release-inputs/install.ps1 `
   --app-updater ../release-inputs/update-app.ps1 `
-  --app-manifest ../release-inputs/installer-app-release-v1.2.0.json `
+  --app-manifest ../release-inputs/installer-app-release-v1.2.1.json `
   --iscc ../inno/ISCC.exe `
   --native-artifact ../prior/autoclip-cpu-native-win_x64-cp311-v1-20261002-3343baed-r2.zip `
   --nvidia-native-artifact ../prior/autoclip-nvidia-native-win_x64-cp311-20261003-r2.zip `
@@ -40,7 +39,7 @@ directories must be new. The packager replaces the sole app wheel, compares
 declared dependencies, verifies packaged app bytes against the source, retains
 native qualification scope and notices, and regenerates inventories and pins.
 A dependency change requires separate graph/component qualification.
-The compiler derives `AutoClip-Setup-v1.2.0.exe` and its displayed version from
+The compiler derives `AutoClip-Setup-v1.2.1.exe` and its displayed version from
 the wheel; a stale wheel, release mismatch or wrong updater/feed fails the build.
 Pass the generated updater without replacing the historical checkout updater.
 
@@ -52,12 +51,12 @@ manifests must list supported older full-runtime identities and exact manifest
 hashes. Test install/health, update/repeat, rejected update, rollback and generated
 uninstall with preservation checks on the exact candidate before publication;
 then verify anonymous download hashes and the public maintenance path before
-promoting README. See [v1.2.0](releases/v1.2.0.md) for exact delivered identities.
+promoting README. See [v1.2.1](releases/v1.2.1.md) for exact delivered identities.
 
-The v1.2.0 app source is a clean archive of application commit
-`9054f336f70f3b352e766ebcf1db1f792759dadb`, including the tracked bundled UI,
-contracts and tests. Extract `autoclip-1.2.0.tar.gz` and run
-`uv build --wheel autoclip-1.2.0 --out-dir ../app` to build from that source.
+The v1.2.1 app source is a clean archive of application commit
+`01581597556d019a80e054df50e4e4c82f798cdd`, including the tracked bundled UI,
+contracts and tests. Extract `autoclip-1.2.1.tar.gz` and run
+`uv build --wheel autoclip-1.2.1 --out-dir ../app` to build from that source.
 The delivered wheel's 94 packaged application members match the source bytes;
 wheel archive timestamps can differ in a new build. The build receipt and
 `package-provenance.json` record the exact published inputs. CPU/NVIDIA archives

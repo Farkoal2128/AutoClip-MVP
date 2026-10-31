@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "profile": "cpu",
+  "installer_sha256": "c86ad71538b1104b873e18f267c71df3543d6eb24442479e253b5f576a2e38ec",
+  "install": "PASS",
+  "version": "1.2.1",
+  "native_format": "bv*+ba/b",
+  "maintenance": [
+    {
+      "case": "healthy",
+      "label": "initial",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "healthy",
+      "label": "repeat",
+      "native_exit": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "failed-health",
+      "label": "reject",
+      "native_exit": 1,
+      "status": "PASS"
+    },
+    {
+      "case": "rollback",
+      "label": "base",
+      "native_exit": 0,
+      "status": "PASS"
+    }
+  ],
+  "generated_uninstall": "PASS",
+  "owned_files_removed": true,
+  "unknown_file_preserved": true,
+  "baseline_preserved": true,
+  "limits": [
+    "Cached pinned native/prerequisite archives on existing Windows host",
+    "No clean-machine, VM, GUI Finish-launch or NVIDIA installation/inference qualification",
+    "Native silent uninstall displayed a preservation-completion notice; it was observed and acknowledged"
+  ],
+  "removed_owned_files": 11245,
+  "registration_removed": true,
+  "uninstall_completion_dialog_acknowledged": true,
+  "permission_restoration": {
+    "restored": true,
+    "parent_only": true,
+    "existing_child_permissions_unchanged": true,
+    "checked_children": 117
+  },
+  "packaged_repair_smoke": {
+    "version": "1.2.1",
+    "preview_policy": 3,
+    "invalid_caption_cases_rejected": 4,
+    "zero_duration_accepted": true
+  },
+  "install_elapsed_seconds": 575.0371856999991
+}
