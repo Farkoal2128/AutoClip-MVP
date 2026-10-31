@@ -29,8 +29,8 @@ a supported cloud AI provider.
 | --- | --- |
 | Twitch VODs / past broadcasts | Paste a Twitch VOD URL such as `https://www.twitch.tv/videos/123456789`. Live channel pages and Twitch clip URLs are not accepted as direct sources. |
 | YouTube videos / completed livestream replays | Paste a YouTube video URL. The recording must be available and downloadable; access restrictions can require your signed-in browser cookies. |
-| Kick streams and clips | Import a compatible local recording or downloaded clip you have permission to use. Direct Kick URL import is not supported in v1.2.0. |
-| Facebook Live, TikTok LIVE, Instagram Live, and other broadcasts | Import a compatible local recording. These services do not have direct URL integrations in v1.2.0. |
+| Kick streams and clips | Import a compatible local recording or downloaded clip you have permission to use. Direct Kick URL import is not supported in v1.2.1. |
+| Facebook Live, TikTok LIVE, Instagram Live, and other broadcasts | Import a compatible local recording. These services do not have direct URL integrations in v1.2.1. |
 | OBS Studio / Streamlabs recordings | Import the saved video file, for example MP4, MKV, MOV, or WebM. Media must pass the app's validation. |
 | Video podcasts, interviews, webinars, tutorials, and gaming recordings | Import your local video, or use a supported YouTube URL, to select and edit excerpts. |
 
@@ -88,33 +88,32 @@ source. The released application source is available below.
 
 ## Download and install
 
-**Latest Windows release: [v1.2.0 — safety and reliability fixes](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.2.0).**
-Fixes frontend file traversal, unsafe storage-move overlap, stale clip-caption
-loads, export workspace collisions, queue setup failures and invalid provider
-settings. The local server validates Host/Origin before side effects; frontend
-regression tests now run in CI. Ingest and recovery share their media-format set.
-Retains v1.1.1 native-resolution downloads and v1.1.0 video/audio codec fixes.
-For a new installation, download [AutoClip-Setup-v1.2.0.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Setup-v1.2.0.exe).
-Setup installs v1.2.0 directly; no separate update is needed. Existing v1.1.1,
-v1.0.0/MVP installations use the [update ZIP](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Update-v1.2.0.zip)
+**Latest Windows release: [v1.2.1 — preview and reliability fixes](https://github.com/Farkoal2128/AutoClip-MVP/releases/tag/v1.2.1).**
+Displays usable ingest validation errors, reuses compatible full-range H.264
+previews, protects queued jobs and kept clips during cleanup, preserves newer
+caption edits, validates caption timing and cleans failed Windows upload staging.
+Retains v1.2.0 safety fixes, v1.1.1 native-resolution downloads and earlier codecs.
+For a new installation, download [AutoClip-Setup-v1.2.1.exe](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.1/AutoClip-Setup-v1.2.1.exe).
+Setup installs v1.2.1 directly; no separate update is needed. Existing supported
+installations use the [update ZIP](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.1/AutoClip-Update-v1.2.1.zip)
 and instructions below. Original media and saved clips are preserved.
-See the [v1.2.0 fixes and validation record](docs/releases/v1.2.0.md).
+See the [v1.2.1 fixes and verification record](docs/releases/v1.2.1.md).
 
 Twitch may require a signed-in session to expose 1440p source video. Select
 your signed-in browser in Settings under **YouTube / Twitch cookies from**,
 close that browser, and download again. Existing sources need a new download
 to obtain better quality. Export canvas and encoder settings are unchanged.
 
-The app wheel and frontend match the verified v1.2.0 update package. Existing
+The app wheel and frontend match the verified v1.2.1 update package. Existing
 qualified CPU/NVIDIA components are reused without a native rebuild.
 
 Run the installer and choose **Install AutoClip**. CPU is the default profile. The NVIDIA profile uses prebuilt native wheels and checks compatible GPU prerequisites. Review the prerequisite terms shown by Setup. **Launch AutoClip** on the final page opens the application.
 
-For a v1.2.0 installation, run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
+For a v1.2.1 installation, run the same installer again to choose **Update AutoClip** or **Roll back the application**. Remove AutoClip through Windows Installed apps. Shared prerequisites, user data, and files not owned by the installation are preserved.
 
 ### Updating an existing MVP or draft installation
 
-Download [AutoClip-Update-v1.2.0.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/AutoClip-Update-v1.2.0.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.2.0 application with your installed updater. Supports exact v1.1.1, v1.0.0 and MVP r1 runtimes. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The new Setup refuses a different existing runtime before writing files; use the update ZIP for older installations. A new v1.2.0 installation is already current.
+Download [AutoClip-Update-v1.2.1.zip](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.1/AutoClip-Update-v1.2.1.zip), finish or cancel current processing, quit AutoClip, and extract the ZIP. Follow its `UPDATE.md` to apply the 1.2.1 application with your installed updater. Supports exact v1.2.1, v1.2.0, v1.1.1, v1.0.0 and MVP r1 runtimes. This retains the verified runtime, installed maintenance files and previous application for rollback. Installed updaters pin older feed bytes: use the ZIP's explicit local manifest/wheel inputs. The root feed remains at v1.0.0 for compatibility. The new Setup refuses a different existing runtime before writing files; use the update ZIP for older installations. A new v1.2.1 installation is already current.
 
 ## What this repository contains
 
@@ -133,8 +132,8 @@ The public `install.ps1` bootstrap and `app-release.json` update feed stay at th
 
 ## Source code
 
-The latest [AutoClip v1.2.0 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.0/autoclip-1.2.0.tar.gz)
-is a clean archive of [application commit 9054f336](https://github.com/Farkoal2128/myAutoclip/commit/9054f336f70f3b352e766ebcf1db1f792759dadb).
+The latest [AutoClip v1.2.1 application source](https://github.com/Farkoal2128/AutoClip-MVP/releases/download/v1.2.1/autoclip-1.2.1.tar.gz)
+is a clean archive of [application commit 01581597](https://github.com/Farkoal2128/myAutoclip/commit/01581597556d019a80e054df50e4e4c82f798cdd).
 It includes the backend, editable frontend, bundled UI, dependency manifests,
 contracts, tests and license. `package-provenance.json`, `SHA256SUMS` and the
 Setup build receipt identify the delivered source, wheel and installer. All

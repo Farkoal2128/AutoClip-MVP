@@ -2,7 +2,7 @@
 
 [AutoClip](../README.md) is an open-source AI video clipper for Windows. This
 guide covers turning recorded streams and long videos into reviewed,
-captioned clips for social media. Platform support here describes v1.2.0.
+captioned clips for social media. Platform support here describes v1.2.1.
 
 ## Start with a recording
 
